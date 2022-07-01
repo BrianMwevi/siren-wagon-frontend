@@ -1,0 +1,33 @@
+.mapimage img{
+width: 100%;
+border-radius: 10px;
+}
+
+.myform{
+    margin-top: 20px;
+}
+
+.hospital{
+    font-size: 28px;
+}
+
+.location-left img{
+    color: #3C6051;
+}
+
+.card1{
+    box-shadow: 5px 5px 5px  grey;
+}
+
+.card2{
+    margin-top:22%;
+    margin-left:22%;
+    background-color: #3C6051;
+    opacity: 72%;
+
+}
+
+.pickup{
+    font-size: 22px;
+    font-weight: bold;
+}
