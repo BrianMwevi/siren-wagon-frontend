@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PackagesComponent } from './components/packages/packages.component';
 import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
     PackagesComponent,
     AmbulancesComponent,
     PaymentsComponent,
+    AuthComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
