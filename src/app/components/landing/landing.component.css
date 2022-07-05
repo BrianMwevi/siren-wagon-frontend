@@ -1,38 +1,3 @@
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-nav{
-  height: 70px;
-  background: linear-gradient(#3c6051, #fff);
-}
-
-nav a img{
-  margin-left: 50px;
-  height: 50px;
-}
-
-
-.nav-left{
-  display: flex;
-  margin-right: 100px;
-
-}
-
-.nav-left li{
-  margin: 20px;
-  list-style: none;
-}
-
-.nav-left a{
- color: white;
- font-weight: 700;
- font-size: 18px;
-}
-
 .topcard{
 
     display: flex;
@@ -58,6 +23,8 @@ hr{
   width: 40%;
   height: 14px;
   color: black;
+  position: relative;
+  left: -30%;
 }
 .form-control{
   width:40%;
