@@ -1,0 +1,55 @@
+
+
+
+.card2 {
+  margin-top: 22%;
+  margin-left: 22%;
+  background-color: #3c6051;
+  opacity: 72%;
+}
+
+
+.card3{
+  background-color: #3c6051;
+color: #fff;
+}
+
+.pickup {
+  font-size: 22px;
+  font-weight: bold;
+
+}
+
+.fee {
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #3c6051;
+  color: #fff;
+
+}
+
+.white{
+    background-color: white;
+    color: black;
+    margin-left: 35%;
+    height: 50px;
+    width:150px;
+}
+
+.stars{
+    margin-left: 25%;
+}
+
+.stars img{
+    padding:5px;
+
+}
+
+.rate{
+    margin-left:40%;
+    color: white;
+}
+
+.book{
+    margin-left:80%;
+}
