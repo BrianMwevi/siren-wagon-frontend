@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     NavbarComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
