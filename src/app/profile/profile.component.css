@@ -39,6 +39,7 @@ h3{
 
 
 
+
 .custom-shape-divider-bottom-1656921151 {
     position: absolute;
     bottom: 0;
@@ -100,7 +101,7 @@ h3{
     content: '';
     top: -8px;
   }
-  /* .menu__btn > span::after {
+  .menu__btn > span::after {
     content: '';
     top: 8px;
   }
@@ -130,4 +131,4 @@ h3{
   }
   .menu__item:hover {
     background-color: #CFD8DC;
-  } */
+  }
