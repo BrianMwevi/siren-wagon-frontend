@@ -100,7 +100,7 @@ h3{
     content: '';
     top: -8px;
   }
-  .menu__btn > span::after {
+  /* .menu__btn > span::after {
     content: '';
     top: 8px;
   }
@@ -130,4 +130,4 @@ h3{
   }
   .menu__item:hover {
     background-color: #CFD8DC;
-  }
+  } */
