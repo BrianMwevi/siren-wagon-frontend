@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { NavComponent } from './components/nav/nav.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { HomeComponent } from './components/home/home.component';
+import { PackagesComponent } from './components/packages/packages.component';
+import { AmbulancesComponent } from './components/ambulances/ambulances.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -16,9 +24,16 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NavComponent,
+    LandingComponent,
+    ProfileComponent,
+    HomeComponent,
+    PackagesComponent,
+    AmbulancesComponent,
+    PaymentsComponent,
+    AuthComponent,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  
 })
-export class AppModule { }
+export class AppModule {}
