@@ -1,10 +1,6 @@
 {
-<<<<<<< HEAD
   "files.autoSave": "afterDelay",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.formatOnPaste": true
-=======
-  "files.autoSave": "afterDelay"
->>>>>>> dda68e9c92e8e5efc1cc22e43b0be96ee5d66b77
-}
+  "editor.formatOnPaste": true,
+  }
