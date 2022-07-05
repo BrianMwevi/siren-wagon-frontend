@@ -16,7 +16,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
     HomeComponent,
     PackagesComponent,
     AmbulancesComponent,
-    PaymentsComponent
+    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
