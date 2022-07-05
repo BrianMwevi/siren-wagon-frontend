@@ -6,7 +6,7 @@ import { AmbulancesComponent } from './components/ambulances/ambulances.componen
 import { PaymentsComponent } from './components/payments/payments.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'packages', component: PackagesComponent },
   { path: 'ambulances', component: AmbulancesComponent },
   { path:'payments', component: PaymentsComponent },
