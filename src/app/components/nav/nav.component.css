@@ -1,35 +1,31 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-nav{
+nav {
   height: 70px;
   background: linear-gradient(#3c6051, #fff);
 }
 
-nav a img{
+nav a img {
   margin-left: 50px;
   height: 50px;
 }
 
-
-.nav-left{
+.nav-left {
   display: flex;
   margin-right: 100px;
-
 }
 
-.nav-left li{
+.nav-left li {
   margin: 20px;
   list-style: none;
 }
 
-.nav-left a{
- color: white;
- font-weight: 700;
- font-size: 18px;
+.nav-left a {
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
 }
-
