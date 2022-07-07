@@ -8,14 +8,12 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: '', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
   { path: 'packages', component: PackagesComponent },
   { path: 'ambulances', component: AmbulancesComponent },
   { path: 'payments', component: PaymentsComponent },
