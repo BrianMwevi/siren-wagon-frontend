@@ -11,6 +11,7 @@ import { PackagesComponent } from './components/packages/packages.component';
 import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AuthComponent } from './components/auth/auth.component';
     PaymentsComponent,
     AuthComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
