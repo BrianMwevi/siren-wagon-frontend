@@ -12,6 +12,9 @@ import { AmbulancesComponent } from './components/ambulances/ambulances.componen
 import { PaymentsComponent } from './components/payments/payments.component';
 import { AuthComponent } from './components/auth/auth.component';
 
+// import { AgmCoreModule } from '@agm/core';
+import {HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +29,15 @@ import { AuthComponent } from './components/auth/auth.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: '',
+    // }),
   ],
- 
+
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
