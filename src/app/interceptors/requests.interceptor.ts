@@ -1,28 +1,63 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
+
+// export const retryCount = 3;
 
 @Injectable()
 export class RequestsInterceptor implements HttpInterceptor {
-  constructor(private _authService: AuthService) {}
-
+  constructor(private _authService: AuthService, private router: Router) {}
+  retryCount: number = 3;
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const token = this._authService.getLocalStorage('accessToken');
-    console.log(token);
-    if (token) {
-      request = request.clone({
-        setHeaders: { Authorization: 'Bearer ' + token },
-      });
+    const expiryDate = this._authService.getLocalStorage('accessExpiry');
+    const tokenExpired = this.tokenExpired(expiryDate);
+
+    if (!tokenExpired) {
+      request = this.addAuthorization(request);
     }
-    return next.handle(request);
+
+    return next.handle(request).pipe(
+      catchError((error) => {
+        if (error.status === 401) {
+          return this.reauthenticate().pipe(
+            switchMap(() => {
+              request = this.addAuthorization(request);
+              return next.handle(request);
+            })
+          );
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+  tokenExpired(expiryDate: string | number) {
+    if (!expiryDate) return true;
+    if (new Date() > new Date(expiryDate)) return true;
+    return false;
+  }
+
+  addAuthorization(request: any) {
+    const accessToken = this._authService.getLocalStorage('accessToken');
+    return request.clone({
+      setHeaders: { Authorization: 'Bearer ' + accessToken },
+    });
+  }
+
+  reauthenticate(): Observable<any> {
+    return this._authService
+      .refreshToken()
+      .pipe(map((token) => this._authService.setToken(token)));
   }
 }
