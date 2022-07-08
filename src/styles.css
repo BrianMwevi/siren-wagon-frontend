@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+.alert {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.center-container {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
