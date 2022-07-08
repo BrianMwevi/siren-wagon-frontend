@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
@@ -11,6 +12,9 @@ import { Profile } from '../models/Profile';
   providedIn: 'root',
 })
 export class AuthService {
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
   public redirectUrl: string = '';
 
   private initialUser: any = null;
@@ -32,20 +36,29 @@ export class AuthService {
   loginUser(user: any): Observable<any> {
     return this.http.post<any>(`${this.url}/users/login/`, user).pipe(
       map((jwtToken: any) => {
-        this.setToken(jwtToken);
-        this.getProfile().subscribe();
+        const user_id = this.setToken(jwtToken);
+        this.getProfile(user_id).subscribe();
         return this.profile.subscribe((user) => user);
       })
     );
   }
 
-  getProfile(): Observable<Profile> {
-    return this.http.get<Profile>(`${this.url}/profile`).pipe(
+  getProfile(id: number): Observable<Profile> {
+    return this.http.get<Profile>(`${this.url}/profile/${id}`).pipe(
       map((profile: any) => {
         this.setLocalStorage('profile', profile);
         this.profileSource.next(profile);
         return profile;
       })
+    );
+  }
+
+  refreshToken(): Observable<any> {
+    const token = this.getLocalStorage('refreshToken');
+    return this.http.post<any>(
+      `${this.url}/users/token/refresh/`,
+      { refresh: token },
+      this.httpOptions
     );
   }
 
@@ -60,7 +73,7 @@ export class AuthService {
     );
   }
 
-  setToken(token: any): void {
+  setToken(token: any) {
     this.setLocalStorage('accessToken', token.access);
     this.setLocalStorage('refreshToken', token.refresh);
 
@@ -69,8 +82,12 @@ export class AuthService {
     const refreshTokenParts = token.refresh.split('.');
     const accessToken = JSON.parse(window.atob(accessTokenParts[1]));
     const refreshToken = JSON.parse(window.atob(refreshTokenParts[1]));
+
+    // this.setLocalStorage('user_id', accessTokenParts[0]);
+
     this.setLocalStorage('accessExpiry', new Date(accessToken.exp * 1000));
     this.setLocalStorage('refreshExpiry', new Date(refreshToken.exp * 1000));
+    return JSON.parse(window.atob(accessTokenParts[1])).user_id;
   }
 
   // updateProfile(profileId: number, profile: any): Observable<any> {
