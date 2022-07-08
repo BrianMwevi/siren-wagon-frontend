@@ -19,7 +19,7 @@
     <title>Homepage</title>
   </head>
   <body>
-     <div class="col-md-5">
+     <div class="col-md-5"  *ngFor="let t of trip">
             <div class="card card2" style="width: 32rem">
               <div class="card-body">
                 <div class="row">
@@ -30,7 +30,7 @@
                       <div class="card-body">
                         <span class="pickup"> Pickup-point </span>
                         <br />
-                        Wendani
+                        {{t.pickup}}
                       </div>
                     </div>
                   </div>
@@ -40,7 +40,7 @@
                       <div class="card-body">
                         <span class="pickup"> Destination </span>
                         <br />
-                        Thika
+                       {{t.destination.name}}
                       </div>
                     </div>
                   </div>
@@ -53,7 +53,7 @@
                   <div class="col-md-1"></div>
                   <div class="col-md-8">
                     <div class="card fee" style="width: 25rem">
-                      <div class="card-body">FEE : KES 2,500</div>
+                      <div class="card-body">FEE : KES {{t.fee}}</div>
                     </div>
                   </div>
                   <div class="col-md-1"></div>
@@ -96,7 +96,8 @@
               </div>
             </div>
           </div>
-      
+
+
 
 
     <!-- Optional JavaScript -->
