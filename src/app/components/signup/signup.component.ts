@@ -17,10 +17,10 @@ import {
 })
 export class SignupComponent implements OnInit {
   user: User = {
-    username: 'admin',
-    email: 'admin@gmail.com',
-    phone: '+254796710845',
-    password: 'pass11234',
+    username: '',
+    email: '',
+    phone: '',
+    password: '',
   };
   separateDialCode = true;
   SearchCountryField = SearchCountryField;
@@ -40,7 +40,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   onSignup(form: NgForm) {
-    console.log(form);
     if (form.valid) {
       this.ngxService.start();
       form.value.phone = form.value.phone.e164Number;
@@ -62,9 +61,8 @@ export class SignupComponent implements OnInit {
   processErrors(form: NgForm, errors: any) {
     this.ngxService.stopAll();
     for (const error in errors) {
-      for (let message of errors[error]) {
+      for (let _ of errors[error]) {
         form.form.controls[error].setErrors({ exists: true });
-        // this._authService.logMessage(message, 'alert-danger', 8000);
       }
     }
   }
