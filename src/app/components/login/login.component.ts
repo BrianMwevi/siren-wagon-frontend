@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/User';
-import { FlashMessagesService } from 'flash-messages-angular';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 
 @Component({
@@ -11,28 +11,43 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 })
 export class LoginComponent implements OnInit {
   user: any = {
-    email: 'james@gmail.com',
-    password: 'pass11234',
+    email: '',
+    password: '',
   };
   constructor(
     private _authService: AuthService,
-    private flashMessage: FlashMessagesService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
-  onLogin() {
-    // this.ngxService.start(([taskId] = 'default'));
-    // Do something here...
+  onLogin(form: NgForm) {
+    if (form.valid) {
+      this.ngxService.start();
+      this._authService
+        .loginUser(form.value)
+        .then((token) => {
+          this.updateLocalStorage(token);
+          this._authService.logMessage(
+            'Logged in successfully',
+            'alert-success'
+          );
+          form.reset();
 
-    this.ngxService.start();
-    this._authService.loginUser(this.user).subscribe((data) => {
-      this.ngxService.stop();
-      this.flashMessage.show('Logged in Successfully!', {
-        cssClass: 'alert-success',
-        timeout: 3000,
-      });
-    });
+          return this.router.navigate(['/']);
+        })
+        .catch((error) => {
+          console.log(error.message);
+          this._authService.logMessage(
+            'Wrong credentials, please try again',
+            'alert-danger'
+          );
+        });
+    }
+  }
+  updateLocalStorage(token: string) {
+    const user_id = this._authService.setToken(token);
+    this._authService.getProfile(user_id).subscribe();
   }
 }

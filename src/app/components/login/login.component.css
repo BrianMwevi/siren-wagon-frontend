@@ -3,3 +3,29 @@
   background-color: #093545;
   position: relative;
 }
+
+.login-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-image: url(../../../assets/login-image.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 100px;
+}
+
+
+
+.login-btn {
+  border: 2px solid #20df80;
+  /* background: #20df809c; */
+  padding: 0.5rem 0rem;
+  background-color: transparent;
+}
+.login-btn:hover {
+  background-color: #20df809f;
+  transition: all 0.3s linear;
+  font-weight: bolder;
+  border: 2px solid transparent;
+}
