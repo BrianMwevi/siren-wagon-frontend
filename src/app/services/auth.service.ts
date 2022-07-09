@@ -46,13 +46,10 @@ export class AuthService {
     return await lastValueFrom(value);
   }
 
-  getProfile(id: number): Observable<Profile> {
-    return this.http.get<Profile>(`${this.url}/profile/${id}`).pipe(
-      map((profile: any) => {
-        this.setLocalStorage('profile', profile);
-        this.profileSource.next(profile);
-        return profile;
-      })
+  async getProfile(id: number) {
+    const resp = this.http.get<Profile>(`${this.url}/profile/${id}`);
+    return await lastValueFrom(resp).then((profile) =>
+      this.setLocalStorage('profile', profile)
     );
   }
 
@@ -128,7 +125,6 @@ export class AuthService {
   };
 
   processErrors(errors: any) {
-
     for (const error in errors) {
       for (let message of errors[error]) {
         this.logMessage(message, 'alert-danger', 8000);

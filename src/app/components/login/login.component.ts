@@ -34,11 +34,9 @@ export class LoginComponent implements OnInit {
             'alert-success'
           );
           form.reset();
-
           return this.router.navigate(['/']);
         })
         .catch((error) => {
-          console.log(error.message);
           this._authService.logMessage(
             'Wrong credentials, please try again',
             'alert-danger'
@@ -48,6 +46,6 @@ export class LoginComponent implements OnInit {
   }
   updateLocalStorage(token: string) {
     const user_id = this._authService.setToken(token);
-    this._authService.getProfile(user_id).subscribe();
+    this._authService.getProfile(user_id);
   }
 }
