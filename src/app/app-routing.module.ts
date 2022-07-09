@@ -9,6 +9,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'ambulances', component: AmbulancesComponent },
   { path: 'payments', component: PaymentsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'maps', component: MapTrackerComponent },
 ];
 
 @NgModule({
