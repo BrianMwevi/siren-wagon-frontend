@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
+import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  SearchCountryField,
+  CountryISO,
+  PhoneNumberFormat,
+} from 'ngx-intl-tel-input';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-signup',
@@ -9,20 +17,42 @@ import { User } from 'src/app/models/User';
 })
 export class SignupComponent implements OnInit {
   user: User = {
-    username: 'james',
-    email: 'james@gmail.com',
-    phone: '5634634',
-    password: 'pass11234',
+    username: '',
+    email: '',
+    phone: '',
+    password: '',
   };
+  separateDialCode = true;
+  SearchCountryField = SearchCountryField;
+  CountryISO = CountryISO;
+  PhoneNumberFormat = PhoneNumberFormat;
+  preferredCountries: CountryISO[] = [
+    CountryISO.UnitedStates,
+    CountryISO.UnitedKingdom,
+  ];
+
   constructor(private _authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.onSignup();
-  }
+  ngOnInit(): void {}
 
-  onSignup() {
-    this._authService.signupUser(this.user).subscribe((user) => {
-      console.log(user);
-    });
+  onSignup(form: NgForm) {
+    if (form.valid) {
+      form.value.phone = form.value.phone.e164Number;
+      this._authService
+        .signupUser(form.value)
+        .then((user) => {
+          this._authService.logMessage(
+            'Account created successfully',
+            'alert-success'
+          );
+        })
+        .catch((error) => {
+          this._authService.logMessage(
+            'Signup unsuccessful, please try again',
+            'alert-danger',
+            5000
+          );
+        });
+    }
   }
 }
