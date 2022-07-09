@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { ErrorHandlerService } from './error-handler.service';
+import { FlashMessagesService } from 'flash-messages-angular';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
@@ -25,22 +27,23 @@ export class AuthService {
   public profile = this.profileSource.asObservable();
   private url = `${environment.DEV_URL}`;
 
-  constructor(private http: HttpClient, private route: Router) {
+  constructor(
+    private http: HttpClient,
+    private handleErrors: ErrorHandlerService,
+    private flashMessage: FlashMessagesService,
+    private ngxService: NgxUiLoaderService
+  ) {
     this.profileSource.next(this.getLocalStorage('profile'));
   }
 
-  signupUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.url}/users/register/`, user);
+  async signupUser(user: User) {
+    const value = this.http.post<User>(`${this.url}/users/register/`, user);
+    return await lastValueFrom(value);
   }
 
-  loginUser(user: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/users/login/`, user).pipe(
-      map((jwtToken: any) => {
-        const user_id = this.setToken(jwtToken);
-        this.getProfile(user_id).subscribe();
-        return this.profile.subscribe((user) => user);
-      })
-    );
+  async loginUser(user: User) {
+    const value = this.http.post<any>(`${this.url}/users/login/`, user);
+    return await lastValueFrom(value);
   }
 
   getProfile(id: number): Observable<Profile> {
@@ -67,7 +70,6 @@ export class AuthService {
       map((resp) => {
         this.removeLocalStorage();
         this.profileSource.next(this.initialUser);
-        this.route.navigate([this.redirectUrl]);
         return this.profile.subscribe();
       })
     );
@@ -116,4 +118,12 @@ export class AuthService {
     if (key === 'profile' && item != null) return JSON.parse(item);
     return item;
   }
+
+  logMessage = (message: string, messageType: string, time = 5000) => {
+    this.ngxService.stopAll();
+    this.flashMessage.show(message, {
+      cssClass: messageType,
+      timeout: time,
+    });
+  };
 }

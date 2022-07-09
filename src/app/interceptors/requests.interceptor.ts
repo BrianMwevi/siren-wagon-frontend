@@ -11,12 +11,9 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
-// export const retryCount = 3;
-
 @Injectable()
 export class RequestsInterceptor implements HttpInterceptor {
   constructor(private _authService: AuthService, private router: Router) {}
-  retryCount: number = 3;
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
@@ -30,7 +27,8 @@ export class RequestsInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error) => {
-        if (error.status === 401) {
+        const profile = this._authService.getLocalStorage('profile');
+        if (error.status === 401 && profile) {
           return this.reauthenticate().pipe(
             switchMap(() => {
               request = this.addAuthorization(request);
