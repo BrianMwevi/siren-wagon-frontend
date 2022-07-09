@@ -19,26 +19,33 @@
                 #signupUsername="ngModel"
                 placeholder="Enter username"
                 required
+                exists="false"
                 minlength="3"
                 class="form-control custom-input"
                 [ngClass]="{
                   'is-invalid':
-                    (signupUsername.errors && signupUsername.touched) ||
+                    (signupUsername.errors && signupUsername.touched)  || signupUsername.errors?.['exists'] ||
                     (signupForm.submitted && !signupForm.value.username)
                 }"
                 [(ngModel)]="user.username"
               />
               <div
                 [hidden]="!signupUsername.errors?.['required']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
                 <p>Username required</p>
               </div>
               <div
                 [hidden]="!signupUsername.errors?.['minlength']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
                 <p>Must be at least 3 characters</p>
+              </div>
+              <div
+                [hidden]="!signupUsername.errors?.['exists']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Username taken, please try another one</p>
               </div>
             </div>
             <div class="form-group py-2 px-4">
@@ -48,26 +55,33 @@
                 #signupEmail="ngModel"
                 placeholder="Enter email address"
                 required
+                exists="false"
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                 class="form-control custom-input"
                 [ngClass]="{
                   'is-invalid':
-                    (signupEmail.invalid && signupEmail.touched) ||
+                    (signupEmail.invalid && signupEmail.touched) || signupEmail.errors?.['exists'] ||
                     (signupForm.submitted && !signupForm.value.email)
                 }"
                 [(ngModel)]="user.email"
               />
               <div
                 [hidden]="!signupEmail.errors?.['required']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
-                <p class="p-0 m-0 custom-color">Email required</p>
+                <p class="p-0 m-0 text-danger">Email required</p>
               </div>
               <div
                 [hidden]="!signupEmail.errors?.['pattern']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
-                <p class="p-0 m-0 custom-color">Enter a valid email address</p>
+                <p class="p-0 m-0 text-danger">Enter a valid email address</p>
+              </div>
+              <div
+                [hidden]="!signupEmail.errors?.['exists']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Email already in use, please try another one</p>
               </div>
             </div>
             <div class="form-group py-2 px-4">
@@ -78,7 +92,7 @@
                   CountryISO.UnitedKingdom
                 ]"
                 [cssClass]="
-                  signupPhone.touched && signupPhone.errors
+                  signupPhone.touched && signupPhone.errors|| signupPhone.errors?.['exists']
                     ? 'is-invalid form-control custom-input'
                     : 'form-control custom-input'
                 "
@@ -95,27 +109,37 @@
                 [maxLength]="15"
                 [phoneValidation]="true"
                 name="phone"
+                exists="false"
                 [(ngModel)]="user.phone"
               >
               </ngx-intl-tel-input>
               <div
-                class="custom-color text-left p-0 m-0"
+                class="text-danger text-left p-0 m-0"
                 [ngClass]="
                   signupPhone.touched && signupPhone.errors?.['required'] || signupForm.submitted && signupPhone.errors?.['required']
                     ? ''
                     : 'invalid-feedback'
                 "
               >
-                <p class="p-0 m-0 custom-color">Phone number is required.</p>
+                <p class="p-0 m-0 text-danger">Phone number is required.</p>
+              </div>
+              <div
+                [ngClass]="
+                  signupPhone.errors?.['exists']? ''
+                    : 'invalid-feedback'
+                "
+                class="text-danger text-left p-0 m-0"
+              >
+                <p>Phone number already in use, please try another one</p>
               </div>
               <div
                 [ngClass]="
                   !signupPhone.errors?.['required'] && signupPhone.errors?.['validatePhoneNumber']?.valid == false || !signupPhone.errors?.['required'] && signupForm.submitted && signupPhone.errors?.['validatePhoneNumber']?.valid == false? ''
                     : 'invalid-feedback'
                 "
-                class="custom-color text-left p-0 m-0"
+                class="text-danger text-left p-0 m-0"
               >
-                <p class="p-0 m-0 custom-color">
+                <p class="p-0 m-0 text-danger">
                   Must be of format: +25407... or +2547...
                 </p>
               </div>
@@ -139,17 +163,15 @@
               />
               <div
                 [hidden]="!signupPassword.errors?.['required']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
-                <p class="p-0 m-0 custom-color">Password required.</p>
+                <p class="p-0 m-0 text-danger">Password required.</p>
               </div>
               <div
                 [hidden]="!signupPassword.errors?.['minlength']"
-                class="invalid-feedback custom-color text-left p-0 m-0"
+                class="invalid-feedback text-danger text-left p-0 m-0"
               >
-                <p class="p-0 m-0 custom-color">
-                  Must be at least 8 characters
-                </p>
+                <p class="p-0 m-0 text-danger">Must be at least 8 characters</p>
               </div>
             </div>
             <button class="custom-btn px-5" type="submit">Sign Up</button>

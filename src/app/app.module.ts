@@ -75,8 +75,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderRouterModule,
     // NgxUiLoaderHttpModule,
     AppRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
   ],
   providers: [
     AuthService,

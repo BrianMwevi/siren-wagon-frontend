@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 import { NgForm } from '@angular/forms';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   SearchCountryField,
   CountryISO,
   PhoneNumberFormat,
 } from 'ngx-intl-tel-input';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-signup',
@@ -17,10 +17,10 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 })
 export class SignupComponent implements OnInit {
   user: User = {
-    username: '',
-    email: '',
-    phone: '',
-    password: '',
+    username: 'admin',
+    email: 'admin@gmail.com',
+    phone: '+254796710845',
+    password: 'pass11234',
   };
   separateDialCode = true;
   SearchCountryField = SearchCountryField;
@@ -31,12 +31,18 @@ export class SignupComponent implements OnInit {
     CountryISO.UnitedKingdom,
   ];
 
-  constructor(private _authService: AuthService) {}
+  constructor(
+    private _authService: AuthService,
+    private ngxService: NgxUiLoaderService,
+    private route: Router
+  ) {}
 
   ngOnInit(): void {}
 
   onSignup(form: NgForm) {
+    console.log(form);
     if (form.valid) {
+      this.ngxService.start();
       form.value.phone = form.value.phone.e164Number;
       this._authService
         .signupUser(form.value)
@@ -45,14 +51,21 @@ export class SignupComponent implements OnInit {
             'Account created successfully',
             'alert-success'
           );
+          this.route.navigate(['/login']);
         })
         .catch((error) => {
-          this._authService.logMessage(
-            'Signup unsuccessful, please try again',
-            'alert-danger',
-            5000
-          );
+          this.processErrors(form, error.error);
         });
+    }
+  }
+
+  processErrors(form: NgForm, errors: any) {
+    this.ngxService.stopAll();
+    for (const error in errors) {
+      for (let message of errors[error]) {
+        form.form.controls[error].setErrors({ exists: true });
+        // this._authService.logMessage(message, 'alert-danger', 8000);
+      }
     }
   }
 }

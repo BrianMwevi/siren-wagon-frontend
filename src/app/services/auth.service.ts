@@ -126,4 +126,13 @@ export class AuthService {
       timeout: time,
     });
   };
+
+  processErrors(errors: any) {
+
+    for (const error in errors) {
+      for (let message of errors[error]) {
+        this.logMessage(message, 'alert-danger', 8000);
+      }
+    }
+  }
 }
