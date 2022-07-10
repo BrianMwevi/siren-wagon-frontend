@@ -50,6 +50,6 @@ export class LoginComponent implements OnInit {
     this._authService.getProfile(user_id).then((profie) => {
       this.ngxService.stop();
       this.router.navigate([this._authService.redirectUrl]);
-    });
+    }).catch(error => console.log(error.error));
   }
 }

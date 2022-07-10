@@ -25,7 +25,7 @@ export class AuthService {
   );
 
   public profile = this.profileSource.asObservable();
-  private url = `${environment.DEV_URL}`;
+  private url = `${environment.PROD_URL}`;
 
   constructor(
     private http: HttpClient,
