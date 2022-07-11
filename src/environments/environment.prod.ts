@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  PROD_URL: 'https://siren-wagon.herokuapp.com/api',
 };
