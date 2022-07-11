@@ -16,20 +16,22 @@ import {
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  placeholder:string="254712345678"
   user: User = {
     username: '',
     email: '',
     phone: '',
     password: '',
   };
-  separateDialCode = true;
-  SearchCountryField = SearchCountryField;
+  // separateDialCode = true;
+  // SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
   PhoneNumberFormat = PhoneNumberFormat;
-  preferredCountries: CountryISO[] = [
-    CountryISO.UnitedStates,
-    CountryISO.UnitedKingdom,
-  ];
+  // customPlaceholder = customPlaceholder;
+  // preferredCountries: CountryISO[] = [
+  //   CountryISO.UnitedStates,
+  //   CountryISO.UnitedKingdom,
+  // ];
 
   constructor(
     private _authService: AuthService,
@@ -42,7 +44,7 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm) {
     if (form.valid) {
       this.ngxService.start();
-      form.value.phone = form.value.phone.e164Number;
+      form.value.phone = form.value.phone.e164Number.slice(1);
       this._authService
         .signupUser(form.value)
         .then((user) => {
@@ -50,6 +52,7 @@ export class SignupComponent implements OnInit {
             'Account created successfully',
             'alert-success'
           );
+          form.resetForm();
           this.route.navigate(['/login']);
         })
         .catch((error) => {

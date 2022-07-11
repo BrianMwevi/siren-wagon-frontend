@@ -29,8 +29,8 @@ export class AuthGuard implements CanActivate {
   }
 
   checkIsLoggedIn(nextUrl: string): true | UrlTree {
-    const profile = this._auth.getLocalStorage('profile');
-    if (profile !== null) return true;
+    const userId = this._auth.getLocalStorage('userId');
+    if (userId !== null) return true;
     this._auth.redirectUrl = nextUrl;
     return this.router.parseUrl('/login');
   }

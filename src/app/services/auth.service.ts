@@ -25,7 +25,7 @@ export class AuthService {
   );
 
   public profile = this.profileSource.asObservable();
-  private url = `${environment.DEV_URL}`;
+  private url = `${environment.PROD_URL}`;
 
   constructor(
     private http: HttpClient,
@@ -82,11 +82,12 @@ export class AuthService {
     const accessToken = JSON.parse(window.atob(accessTokenParts[1]));
     const refreshToken = JSON.parse(window.atob(refreshTokenParts[1]));
 
-    // this.setLocalStorage('user_id', accessTokenParts[0]);
-
     this.setLocalStorage('accessExpiry', new Date(accessToken.exp * 1000));
     this.setLocalStorage('refreshExpiry', new Date(refreshToken.exp * 1000));
-    return JSON.parse(window.atob(accessTokenParts[1])).user_id;
+    this.setLocalStorage(
+      'userId',
+      JSON.parse(window.atob(accessTokenParts[1])).user_id
+    );
   }
 
   // updateProfile(profileId: number, profile: any): Observable<any> {
@@ -106,6 +107,7 @@ export class AuthService {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('profile');
+    localStorage.removeItem('userId');
     localStorage.removeItem('accessExpiry');
     localStorage.removeItem('refreshExpiry');
     return this.getLocalStorage('accessToken');
