@@ -12,7 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'packages', component: PackagesComponent },

@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'flash-messages-angular';
 import { AppRoutingModule } from './app-routing.module';
+// import { AgmCoreModule } from '@agm/core';
 import {
   NgxUiLoaderModule,
   NgxUiLoaderConfig,
@@ -64,7 +65,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     // NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
     // NgxUiLoaderHttpModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'f423e44c405db71d0debe874a1b21f1a',
+    // }),
   ],
+
   providers: [
     AuthService,
     {
