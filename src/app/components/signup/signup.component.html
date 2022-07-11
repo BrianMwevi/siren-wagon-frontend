@@ -87,27 +87,21 @@
             <div class="form-group py-2 px-4">
               <ngx-intl-tel-input
                 #signupPhone="ngModel"
-                [preferredCountries]="[
-                  CountryISO.UnitedStates,
-                  CountryISO.UnitedKingdom
-                ]"
                 [cssClass]="
                   signupPhone.touched && signupPhone.errors|| signupPhone.errors?.['exists']
                     ? 'is-invalid form-control custom-input'
                     : 'form-control custom-input'
                 "
-                [enableAutoCountrySelect]="false"
-                [enablePlaceholder]="true"
+                [enableAutoCountrySelect]="true"
+                [enablePlaceholder]="false"
                 [searchCountryFlag]="true"
                 [required]="true"
-                [searchCountryField]="[
-                  SearchCountryField.Iso2,
-                  SearchCountryField.Name
-                ]"
+                
                 [selectFirstCountry]="false"
                 [selectedCountryISO]="CountryISO.Kenya"
-                [maxLength]="15"
+                [maxLength]="12"
                 [phoneValidation]="true"
+                [customPlaceholder]="placeholder"
                 name="phone"
                 exists="false"
                 [(ngModel)]="user.phone"
@@ -140,7 +134,7 @@
                 class="text-danger text-left p-0 m-0"
               >
                 <p class="p-0 m-0 text-danger">
-                  Must be of format: +25407... or +2547...
+                  Must be of format: 254712345678...
                 </p>
               </div>
             </div>

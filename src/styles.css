@@ -28,18 +28,21 @@
 }
 .custom-input {
   color: #fff;
+  /* color: #20df80; */
   outline: none;
   border: none;
-  background-color: #224957;
+  background-color: rgba(14, 132, 175, 0.173);
+  /* background-color: transparent; */
   padding: 0.4rem 0.5rem;
-  border-radius: 0;
+  border-radius: 4px;
   box-shadow: none;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #20df80;
 }
 
 .custom-input:focus,
 .custom-input:active {
   border: none;
+  border-radius:0;
   color: #20df80;
   border-bottom: 1px solid #20df80;
   outline: none;

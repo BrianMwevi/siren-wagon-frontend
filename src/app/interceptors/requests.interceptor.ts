@@ -27,8 +27,8 @@ export class RequestsInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error) => {
-        const profile = this._authService.getLocalStorage('profile');
-        if (error.status === 401 && profile) {
+        const userId = this._authService.getLocalStorage('userId');
+        if (error.status === 401 && userId) {
           return this.reauthenticate().pipe(
             switchMap(() => {
               request = this.addAuthorization(request);
