@@ -51,6 +51,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
+    
   ],
 
   imports: [
