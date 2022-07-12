@@ -1,33 +1,74 @@
-<div class="back">
-    <div class="loginbox" style="display: flex">
-      <!-- <img src="https://i.imgur.com/ZYzTdD0.png" class="avatar" style="height:50px ;"> -->
-      <h1>Login</h1>
-      <form method="post" action="#">
-        <input type="text" name="" placeholder=" Username" class="form-control" />
-        <input
-          type="password"
-          name=""
-          placeholder=" Password"
-          class="form-control"
-        />
-        <br />
-        <input
-          type="submit"
-          name=""
-          value="Login"
-          style="
-            margin: 10px 80px 0px 160px;
-            width: 80px;
-            padding: 5px 10px;
-            background-color: #d9d9d9;
-            border-radius: transparent;
-          "
-        />
-        <!-- <a href="#">Lost your password?</a><br> -->
-        <p style="margin-left: 80px; color: white">
-          Dont have an account?
-          <a href="" style="color: white; text-decoration: none">Register</a>
-        </p>
-      </form>
+<section class="user-login">
+  <div class="container center-container">
+    <div class="row">
+      <div class="col-lg-5 mx-auto text-center form-container">
+        <h1 class="custom-color py-2 mb-4">Sign In</h1>
+        <form #form="ngForm" (ngSubmit)="onLogin(form)">
+          <div class="form-group my-3">
+            <input
+              #email="ngModel"
+              type="email"
+              name="email"
+              class="form-control custom-input"
+              placeholder="Email"
+              required
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              [(ngModel)]="user.email"
+              [ngClass]="{
+                'is-invalid':
+                  (email.errors && email.touched) ||
+                  (form.submitted && !form.value.email)
+              }"
+            />
+            <div
+              [hidden]="!email.errors?.['pattern']"
+              class="invalid-feedback text-danger text-left"
+            >
+              <p class="ml-2 custom-color">Enter a valid email</p>
+            </div>
+            <div
+              [hidden]="!email.errors?.['required']"
+              class="invalid-feedback text-danger text-left"
+            >
+              <p class="ml-2 custom-color">Email address is required</p>
+            </div>
+          </div>
+          <div class="form-group my-5">
+            <input
+              #password="ngModel"
+              type="password"
+              name="password"
+              class="form-control custom-input"
+              placeholder="Password"
+              required
+              [ngClass]="{
+                'is-invalid':
+                  (password.errors && password.touched) ||
+                  (form.submitted && !form.value.password)
+              }"
+              [(ngModel)]="user.password"
+            />
+
+            <div
+              [hidden]="!password.errors?.['required']"
+              class="invalid-feedback text-danger text-left"
+            >
+              <p class="ml-2 custom-color">Password is required</p>
+            </div>
+          </div>
+          <button class="custom-btn text-white px-5 mb-3">Login</button>
+          <div class="d-flex justify-content-center text-white py-2">
+            <p>Don't have an account?</p>
+            <a
+              class="ml-2 account-link"
+              routerLink="/signup"
+              (click)="form.reset()"
+              >Signup</a
+            >
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+  <div class="login-footer"></div>
+</section>

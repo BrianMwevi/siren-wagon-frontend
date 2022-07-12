@@ -1,55 +1,192 @@
-<div class="back">
-    <div class="loginbox" style="display: flex">
-      <!-- <img src="https://i.imgur.com/ZYzTdD0.png" class="avatar" style="height:50px ;"> -->
-      <h1>Signup</h1>
-      <form method="post" action="#">
-        <!-- <input type="text" name="" placeholder=" Username" class="form-control" /> -->
-        <input
-          type="username"name=""
-          placeholder="your username"
-          class="form-control"
-        />
-        <br />
-        
-        <!-- <input type="text" name="" placeholder=" phonenumber " class="form-control" /> -->
-        <input
-          type="phonenumber"  name=""
-          placeholder="PhoneNumber"
-          class="form-control"
-        />
-        <br />
-         <!-- <input type="text" name="" placeholder="password " class="form-control" /> -->
-        <input
-          type="password"  name=""
-          placeholder="password"
-          class="form-control"
-        />
-        <br />
-         <!-- <input type="text" name="" placeholder=" phonenumber " class="form-control" /> -->
-        <input
-          type="confirm password"  name=""
-          placeholder="confirm password"
-          class="form-control"
-        />
-       
-        <input
-          type="submit"
-          name=""
-          value="Signup"
-          style="
-            margin: 10px 80px 0px 160px;
-            width: 80px;
-            padding: 5px 10px;
-            background-color: #d9d9d9;
-            border-radius: transparent;
-          "
-        />
-       
-        <p style="margin-left: 80px; color: white">
-          You already have an account?
-          <a href="" style="color: white; text-decoration: none">Login</a>
-        </p>
-     
-      </form>
+<section class="user-signup">
+  <div class="signup-overlay"></div>
+  <div class="video-container">
+    <video [muted]="'muted'" autoplay loop class="signup-video">
+      <source src="../../../assets/videos/hospital.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mx-auto content">
+        <div class="form-container">
+          <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+            <h1 class="pb-4">Create Account</h1>
+
+            <div class="form-group py-2 px-4">
+              <input
+                type="text"
+                name="username"
+                #signupUsername="ngModel"
+                placeholder="Enter username"
+                required
+                exists="false"
+                minlength="3"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (signupUsername.errors && signupUsername.touched)  || signupUsername.errors?.['exists'] ||
+                    (signupForm.submitted && !signupForm.value.username)
+                }"
+                [(ngModel)]="user.username"
+              />
+              <div
+                [hidden]="!signupUsername.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Username required</p>
+              </div>
+              <div
+                [hidden]="!signupUsername.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Must be at least 3 characters</p>
+              </div>
+              <div
+                [hidden]="!signupUsername.errors?.['exists']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Username taken, please try another one</p>
+              </div>
+            </div>
+            <div class="form-group py-2 px-4">
+              <input
+                type="email"
+                name="email"
+                #signupEmail="ngModel"
+                placeholder="Enter email address"
+                required
+                exists="false"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (signupEmail.invalid && signupEmail.touched) || signupEmail.errors?.['exists'] ||
+                    (signupForm.submitted && !signupForm.value.email)
+                }"
+                [(ngModel)]="user.email"
+              />
+              <div
+                [hidden]="!signupEmail.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0 text-danger">Email required</p>
+              </div>
+              <div
+                [hidden]="!signupEmail.errors?.['pattern']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0 text-danger">Enter a valid email address</p>
+              </div>
+              <div
+                [hidden]="!signupEmail.errors?.['exists']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p>Email already in use, please try another one</p>
+              </div>
+            </div>
+            <div class="form-group py-2 px-4">
+              <ngx-intl-tel-input
+                #signupPhone="ngModel"
+                [preferredCountries]="[
+                  CountryISO.UnitedStates,
+                  CountryISO.UnitedKingdom
+                ]"
+                [cssClass]="
+                  signupPhone.touched && signupPhone.errors|| signupPhone.errors?.['exists']
+                    ? 'is-invalid form-control custom-input'
+                    : 'form-control custom-input'
+                "
+                [enableAutoCountrySelect]="false"
+                [enablePlaceholder]="true"
+                [searchCountryFlag]="true"
+                [required]="true"
+                [searchCountryField]="[
+                  SearchCountryField.Iso2,
+                  SearchCountryField.Name
+                ]"
+                [selectFirstCountry]="false"
+                [selectedCountryISO]="CountryISO.Kenya"
+                [maxLength]="15"
+                [phoneValidation]="true"
+                name="phone"
+                exists="false"
+                [(ngModel)]="user.phone"
+              >
+              </ngx-intl-tel-input>
+              <div
+                class="text-danger text-left p-0 m-0"
+                [ngClass]="
+                  signupPhone.touched && signupPhone.errors?.['required'] || signupForm.submitted && signupPhone.errors?.['required']
+                    ? ''
+                    : 'invalid-feedback'
+                "
+              >
+                <p class="p-0 m-0 text-danger">Phone number is required.</p>
+              </div>
+              <div
+                [ngClass]="
+                  signupPhone.errors?.['exists']? ''
+                    : 'invalid-feedback'
+                "
+                class="text-danger text-left p-0 m-0"
+              >
+                <p>Phone number already in use, please try another one</p>
+              </div>
+              <div
+                [ngClass]="
+                  !signupPhone.errors?.['required'] && signupPhone.errors?.['validatePhoneNumber']?.valid == false || !signupPhone.errors?.['required'] && signupForm.submitted && signupPhone.errors?.['validatePhoneNumber']?.valid == false? ''
+                    : 'invalid-feedback'
+                "
+                class="text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0 text-danger">
+                  Must be of format: +25407... or +2547...
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group py-2 px-4">
+              <input
+                type="password"
+                name="password"
+                #signupPassword="ngModel"
+                placeholder="Enter password"
+                required
+                minlength="8"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (signupPassword.errors && signupPassword.touched) ||
+                    (signupForm.submitted && signupPassword.invalid)
+                }"
+                [(ngModel)]="user.password"
+              />
+              <div
+                [hidden]="!signupPassword.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0 text-danger">Password required.</p>
+              </div>
+              <div
+                [hidden]="!signupPassword.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0 text-danger">Must be at least 8 characters</p>
+              </div>
+            </div>
+            <button class="custom-btn px-5" type="submit">Sign Up</button>
+            <div class="d-flex justify-content-center text-white pt-4">
+              <p>Have an account?</p>
+              <a
+                class="ml-2 account-link"
+                routerLink="/login"
+                (click)="signupForm.reset()"
+                >Login</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+</section>

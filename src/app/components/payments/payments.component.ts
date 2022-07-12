@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TripService } from '../../services/trip.service';
 
 @Component({
   selector: 'app-payments',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payments.component.css'],
 })
 export class PaymentsComponent implements OnInit {
-  doctors: any = [];
+  trips: any = [];
 
-  constructor() {
-    console.log('constructor');
+  constructor(private tripservice: TripService) {}
+
+  ngOnInit(): void {
+    this.getTrips();
   }
 
-  ngOnInit(): void {}
+  getTrips(): void {
+    this.tripservice.getTrip().subscribe((data) => {
+      this.trips = data;
+    });
+  }
 }

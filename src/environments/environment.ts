@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   DEV_URL: 'http://127.0.0.1:8000/api',
-  PRO_URL: 'https://siren-wagon.herokuapp.com/api',
+  PROD_URL: 'https://siren-wagon.herokuapp.com/api',
 };
 
 /*
