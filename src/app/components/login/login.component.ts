@@ -28,12 +28,13 @@ export class LoginComponent implements OnInit {
       this._authService
         .loginUser(form.value)
         .then((token) => {
+          this._authService.setToken(token);
           this._authService.logMessage(
             'Logged in successfully',
             'alert-success'
           );
-          this.updateLocalStorage(token);
-          return form.reset();
+          form.resetForm();
+          this.router.navigate([this._authService.redirectUrl]);
         })
         .catch((error) => {
           this._authService.logMessage(
@@ -42,14 +43,5 @@ export class LoginComponent implements OnInit {
           );
         });
     }
-  }
-  updateLocalStorage(token: string) {
-    this.ngxService.start();
-    const user_id = this._authService.setToken(token);
-
-    this._authService.getProfile(user_id).then((profie) => {
-      this.ngxService.stop();
-      this.router.navigate([this._authService.redirectUrl]);
-    });
   }
 }

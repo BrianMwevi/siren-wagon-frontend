@@ -74,7 +74,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     // Import NgxUiLoaderModule
     // NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
-    NgxUiLoaderHttpModule,
+    // NgxUiLoaderHttpModule,
     AppRoutingModule,
   ],
   providers: [
