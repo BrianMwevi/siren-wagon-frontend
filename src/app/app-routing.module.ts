@@ -15,8 +15,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path:'newlanding', component: NewlandingComponent},
+  { path: 'landing', component: LandingComponent },
+  { path:'', component: NewlandingComponent},
   { path: 'home', component: HomeComponent },
   {
     path: 'signup',
