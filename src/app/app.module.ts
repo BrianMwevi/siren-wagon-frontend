@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'flash-messages-angular';
 import { AppRoutingModule } from './app-routing.module';
-// import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 import {
   NgxUiLoaderModule,
   NgxUiLoaderConfig,
@@ -51,7 +51,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
-    
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDgEk-p4OSwZrIT7mps8er1xF8CkuimJK4',
+    }),
   ],
 
   imports: [
