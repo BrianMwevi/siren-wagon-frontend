@@ -14,6 +14,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { UserComponent } from './c/user/user.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AmbulancesComponent,
     PaymentsComponent,
     AuthComponent,
+    UserComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,HttpClientModule,CalendarModule.forRoot({
     provide: DateAdapter,

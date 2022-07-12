@@ -7,12 +7,14 @@ import { AmbulancesComponent } from './components/ambulances/ambulances.componen
 import { PaymentsComponent } from './components/payments/payments.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserComponent } from './components/user/user.component';
 
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'user',component: UserComponent},
   { path: 'packages', component: PackagesComponent },
   { path: 'ambulances', component: AmbulancesComponent },
   { path: 'payments', component: PaymentsComponent },
