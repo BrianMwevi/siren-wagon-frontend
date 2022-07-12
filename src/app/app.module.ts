@@ -21,8 +21,6 @@ import {
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -30,7 +28,8 @@ import { HomeComponent } from './components/home/home.component';
 import { PackagesComponent } from './components/packages/packages.component';
 import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component'; 
 import { AuthService } from './services/auth.service';
 import { RequestsInterceptor } from './interceptors/requests.interceptor';
 import { PaymentsFormComponent } from './components/payments-form/payments-form.component';
@@ -53,8 +52,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   declarations: [
     AppComponent,
     NavbarComponent,
-    SignupComponent,
-    LoginComponent,
     NavComponent,
     LandingComponent,
     ProfileComponent,
