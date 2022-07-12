@@ -35,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TripService } from './services/trip.service';
+import { AgmCoreModule } from '@agm/core';
+import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -59,6 +61,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
+    MapTrackerComponent,
   ],
 
   imports: [
@@ -70,6 +73,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot(),
     // Import NgxUiLoaderModule with custom configuration globally
+    AgmCoreModule.forRoot({
+      // apiKey: 'AIzaSyAqQHS82Z-rO2ZXeijvJmPaAcvdde24y0E',
+      // apiKey: 'AIzaSyDgEk-p4OSwZrIT7mps8er1xF8CkuimJK4',
+      apiKey: 'AIzaSyDolIlXkHFZIHWqk4xWPeIi8dP_pM_LMMQ',
+      libraries: ['places'],
+    }),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
     // Import NgxUiLoaderModule
@@ -77,6 +86,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderRouterModule,
     // NgxUiLoaderHttpModule,
     AppRoutingModule,
+    // MatFormFieldModule,
+    // MatInputModule,
   ],
   providers: [
     AuthService,

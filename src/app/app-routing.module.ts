@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
+import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -31,16 +32,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'ambulances', component: AmbulancesComponent },
-  {
-    path: 'payments',
-    component: PaymentsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-  },
+  { path: 'payments', component: PaymentsComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'maps', component: MapTrackerComponent },
 ];
 
 @NgModule({
