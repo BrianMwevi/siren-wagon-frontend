@@ -34,6 +34,7 @@ import { PaymentsFormComponent } from './components/payments-form/payments-form.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TripService } from './services/trip.service';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -79,6 +80,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
   providers: [
     AuthService,
+    TripService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestsInterceptor,
