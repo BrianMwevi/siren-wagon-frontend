@@ -12,6 +12,8 @@ import { AmbulancesComponent } from './components/ambulances/ambulances.componen
 import { PaymentsComponent } from './components/payments/payments.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
     PaymentsComponent,
     AuthComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule,CalendarModule.forRoot({
+    provide: DateAdapter,
+    useFactory: adapterFactory,
+  }),
+],
   providers: [],
   bootstrap: [AppComponent],
 })
