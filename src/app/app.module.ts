@@ -72,7 +72,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FlashMessagesModule.forRoot(),
     // Import NgxUiLoaderModule with custom configuration globally
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAqQHS82Z-rO2ZXeijvJmPaAcvdde24y0E',
+      // apiKey: 'AIzaSyAqQHS82Z-rO2ZXeijvJmPaAcvdde24y0E',
+      // apiKey: 'AIzaSyDgEk-p4OSwZrIT7mps8er1xF8CkuimJK4',
+      apiKey: 'AIzaSyDolIlXkHFZIHWqk4xWPeIi8dP_pM_LMMQ',
       libraries: ['places'],
     }),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
