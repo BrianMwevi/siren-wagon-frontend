@@ -17,16 +17,15 @@
 
 #button1:hover{
     background-color:#3f48439f;
-    margin-top: 10%;
+    
 
 }
 
 .cards{
     display: flex;
     padding-top: 20px;
-    justify-content: space-around;
-    /* margin-right:30px ; */
-    margin-top: 20%;
+    justify-content: space-between;
+    margin-top: 10%;
 }
 
 .card1{
@@ -47,6 +46,7 @@
 #button1{
     background-color: green;
     margin-top: 10%;
+    
 }
 
 .image img{
@@ -64,6 +64,10 @@
     font-size: 32px;
     font-weight: bold;
     color: #3C6051;
+}
+
+.row1{
+    margin-top: 6%;
 }
 
 .row2{
