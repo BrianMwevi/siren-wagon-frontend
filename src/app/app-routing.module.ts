@@ -11,11 +11,14 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { NewlandingComponent } from './components/newlanding/newlanding.component';
+
 import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: 'landing', component: LandingComponent },
+  { path:'', component: NewlandingComponent},
   { path: 'home', component: HomeComponent },
   {
     path: 'signup',
