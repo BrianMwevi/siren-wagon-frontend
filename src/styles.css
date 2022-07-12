@@ -1,1 +1,159 @@
 /* You can add global styles to this file, and also import other style files */
+.alert {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+/* Center any container Start */
+.center-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Center any container End */
+
+/* Form Input global styles start */
+.form-container {
+  background-color: #093545;
+  box-shadow: 0 0 10px #0000007e;
+  padding: 3rem 4rem;
+  border-radius: 4px;
+  text-align: center;
+  color: #20df80;
+}
+.form-control.is-invalid:focus {
+  outline: none;
+  box-shadow: none;
+}
+.custom-input {
+  color: #fff;
+  /* color: #20df80; */
+  outline: none;
+  border: none;
+  background-color: rgba(14, 132, 175, 0.173);
+  /* background-color: transparent; */
+  padding: 0.4rem 0.5rem;
+  border-radius: 4px;
+  box-shadow: none;
+  border-bottom: 1px solid #20df80;
+}
+
+.custom-input:focus,
+.custom-input:active {
+  border: none;
+  border-radius:0;
+  color: #20df80;
+  border-bottom: 1px solid #20df80;
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  animation: animateInput 0.5s ease-in-out;
+}
+
+.custom-input::placeholder {
+  color: rgb(131, 131, 131);
+}
+
+/* Custom color styles Start */
+.custom-color {
+  color: #20df80;
+}
+/* Custom color styles End */
+
+/* Custom account link styles start */
+.account-link {
+  text-decoration: none;
+  color: #20df80a2;
+}
+.account-link:hover {
+  /* font-weight: bold; */
+  color: #20df80;
+  text-decoration: none;
+  transition: all 0.3s linear;
+}
+/* Custom account link styles End */
+
+@keyframes animateInput {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 100%;
+  }
+}
+/* Form Input global styles End */
+
+/* Custom btn start */
+
+.custom-btn {
+  background-color: #1a2036;
+  box-shadow: 6px 6px 24px #0202029f;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 9px 18px;
+  color: #fff;
+  border: 2px solid transparent;
+}
+
+.custom-btn::before {
+  animation: ring 1.5s infinite;
+  content: "";
+  border: 6px solid #00ffcb;
+  box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.custom-btn:hover,
+.custom-btn:focus {
+  /* color: #313133; */
+  font-weight: bolder;
+  background-color: transparent;
+  border: 2px solid #1a2036;
+  border-left: none;
+  border-right: none;
+  font-weight: bolder;
+  transform: translateY(-6px);
+  border-radius: 0;
+}
+
+.custom-btn:hover::before,
+.custom-btn:focus::before {
+  animation: none;
+}
+
+.custom-btn:hover::after,
+.custom-btn:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    opacity: 1;
+  }
+  100% {
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    opacity: 0;
+  }
+}
+/* Custom btn End */
+/* Fix phone country display Start */
+.iti {
+  display: block;
+}
+/* Fix phone country display End */
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
