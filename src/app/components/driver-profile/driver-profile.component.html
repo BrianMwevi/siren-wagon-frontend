@@ -1,0 +1,74 @@
+<section class="driver-profile">
+  <div class="container-fluid px-5 profile-container">
+    <div class="row">
+      <!-- User Profile Start -->
+      <div class="col-lg-2 mt-5 custom-card">
+        <app-user-update-form></app-user-update-form>
+      </div>
+      <!-- User Profile End -->
+      <div class="col-lg-10 mr-auto">
+        <!-- Driver Analytics Start -->
+        <div class="row pb-3 mt-5">
+          <div class="col-lg-3 px-2 mb-4">
+            <div class="custom-card custom-hover">
+              <div class="card-body text-center">
+                <p><i class="fa custom-fa fa-heartbeat text-danger"></i></p>
+                <h2 class="custom-header mt-3 mb-2">20</h2>
+                <p>Lives Saved</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 mb-4 px-2">
+            <div class="custom-card custom-hover">
+              <div class="card-body text-center">
+                <p><i class="fa custom-fa fa-ambulance"></i></p>
+                <h2 class="custom-header mt-3 mb-2">20</h2>
+                <p>Trips Completed</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 px-2 mb-4">
+            <div class="custom-card custom-hover">
+              <div class="card-body text-center">
+                <p><i class="fa custom-fa fa-clock-o"></i></p>
+                <h2 class="custom-header mt-3 mb-2">20</h2>
+                <p>Hours Clocked</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 px-2 mb-4">
+            <div class="custom-card custom-hover">
+              <div class="card-body text-center">
+                <p><i class="fa custom-fa fa-star-half-o text-warning"></i></p>
+                <h2 class="custom-header mt-3 mb-2">20</h2>
+                <p>Ratings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Driver Analytics End -->
+
+        <!-- Latest Trip Start -->
+        <div class="row">
+          <div class="col-lg-8 p-2">
+            <app-patient-profile-detail></app-patient-profile-detail>
+          </div>
+          <!-- Average Performance Start -->
+
+          <div class="col-lg-4">
+            <div class="custom-card card-body text-center">
+              <p><i class="fa custom-fa fa-bar-chart"></i></p>
+              <h2 class="average custom-header custom-hover">86%</h2>
+              <p class="p-0 my-1">Average Performance</p>
+              <small class="pb-3"
+                >You're <strong>24%</strong> better than last month</small
+              >
+            </div>
+          </div>
+          <!-- Average Performance End -->
+        </div>
+        <!-- Latest Trip End -->
+      </div>
+    </div>
+  </div>
+</section>
