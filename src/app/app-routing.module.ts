@@ -9,6 +9,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
+
 import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
@@ -25,6 +27,8 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [NotLoggedInGuard],
   },
+
+  { path: 'createamb', component:AmbulanceformComponent},
   {
     path: 'packages',
     component: PackagesComponent,
