@@ -33,6 +33,7 @@ import { PaymentsFormComponent } from './components/payments-form/payments-form.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
 import { NewlandingComponent } from './components/newlanding/newlanding.component';
 import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
 import { UserUpdateFormComponent } from './components/user-update-form/user-update-form.component';
@@ -41,6 +42,7 @@ import { ChooseProfileComponent } from './components/choose-profile/choose-profi
 import { DriverSignupComponent } from './components/driver-signup/driver-signup.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserComponent } from './components/user/user.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -64,6 +66,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
+    AmbulanceformComponent,
     NewlandingComponent,
     DriverProfileComponent,
     UserUpdateFormComponent,
@@ -72,6 +75,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DriverSignupComponent,
     LogoutComponent,
     NavbarComponent,
+    UserComponent,
   ],
 
   imports: [

@@ -6,8 +6,10 @@ import { PackagesComponent } from './components/packages/packages.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserComponent } from './components/user/user.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
+import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
 import { NewlandingComponent } from './components/newlanding/newlanding.component';
 
 import { AuthGuard } from './guards/auth.guard';
@@ -21,7 +23,6 @@ import { IsDriver } from './guards/is-driver.guard';
 
 const routes: Routes = [
   { path: '', component: NewlandingComponent },
-  { path: 'landing', component: LandingComponent },
   {
     path: 'profile/select',
     component: ChooseProfileComponent,
@@ -37,6 +38,9 @@ const routes: Routes = [
     component: DriverSignupComponent,
     canActivate: [AuthGuard, NoProfile],
   },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'landing', component: LandingComponent },
   { path: 'home', component: HomeComponent },
   {
     path: 'signup',
@@ -48,6 +52,8 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [NotLoggedInGuard],
   },
+
+  { path: 'createamb', component: AmbulanceformComponent },
   {
     path: 'packages',
     component: PackagesComponent,
