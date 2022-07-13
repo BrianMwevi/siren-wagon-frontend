@@ -3,7 +3,8 @@
     <div class="row">
       <!-- User Profile Start -->
       <div class="col-lg-2 mt-5 custom-card">
-        <app-user-update-form></app-user-update-form>
+        <app-user-update-form [profile]="profile"></app-user-update-form>
+        <app-logout></app-logout>
       </div>
       <!-- User Profile End -->
       <div class="col-lg-10 mr-auto">
@@ -50,8 +51,10 @@
 
         <!-- Latest Trip Start -->
         <div class="row">
-          <div class="col-lg-8 p-2">
-            <app-patient-profile-detail></app-patient-profile-detail>
+          <div class="col-lg-8 p-2" *ngIf="profile.ambulance">
+            <app-patient-profile-detail
+              [patients]="profile.ambulance.patients"
+            ></app-patient-profile-detail>
           </div>
           <!-- Average Performance Start -->
 

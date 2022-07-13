@@ -177,9 +177,6 @@ h2.custom-header {
   font-size: 1.8rem;
   font-weight: bolder;
 }
-.updated {
-  color: #36ae7c;
-}
 
 .custom-hover:hover {
   box-shadow: 0 0 5px 5px rgba(8, 34, 29, 0.1);

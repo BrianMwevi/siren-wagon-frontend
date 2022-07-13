@@ -24,7 +24,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HomeComponent } from './components/home/home.component';
 import { PackagesComponent } from './components/packages/packages.component';
-import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
@@ -39,6 +38,9 @@ import { DriverProfileComponent } from './components/driver-profile/driver-profi
 import { UserUpdateFormComponent } from './components/user-update-form/user-update-form.component';
 import { PatientProfileDetailComponent } from './components/patient-profile-detail/patient-profile-detail.component';
 import { ChooseProfileComponent } from './components/choose-profile/choose-profile.component';
+import { DriverSignupComponent } from './components/driver-signup/driver-signup.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -58,7 +60,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ProfileComponent,
     HomeComponent,
     PackagesComponent,
-    AmbulancesComponent,
     PaymentsComponent,
     SignupComponent,
     LoginComponent,
@@ -68,6 +69,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     UserUpdateFormComponent,
     PatientProfileDetailComponent,
     ChooseProfileComponent,
+    DriverSignupComponent,
+    LogoutComponent,
+    NavbarComponent,
   ],
 
   imports: [

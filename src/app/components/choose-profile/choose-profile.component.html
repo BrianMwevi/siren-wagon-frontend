@@ -8,7 +8,7 @@
             <p class="my-3">
               <i class="fa fa-hospital-o custom-fa fa-5x"></i>
             </p>
-            <h2 class="mt-4">Join as a <strong>Doctor</strong></h2>
+            <h2 class="mt-4">Continue as a <strong>Doctor</strong></h2>
             <p>Work with dedicated ambulance drivers to save lives</p>
             <div class="">
               <p class="choose-profile-stats">2K</p>
@@ -18,7 +18,7 @@
           <!-- CARD BACKSIDE -->
           <div class="card_side card_side--back card_side--back-1">
             <div class="center-container">
-              <!-- <a routerLink="/doctor" class="custom-btn btn">Set Profile</a> -->
+              <!-- <!-- <button  class="custom-btn btn">Set Profile</a> -button> -->
               <h2 class="text-white">Coming Soon</h2>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <p class="my-3">
               <i class="fa fa-ambulance custom-fa fa-5x card-2-color"></i>
             </p>
-            <h2 class="mt-4">Join as a <strong>Driver</strong></h2>
+            <h2 class="mt-4">Continue as a <strong>Driver</strong></h2>
             <p>Save lives by rushing patients to the nearest hospital</p>
             <div class="">
               <p class="choose-profile-stats driver-stats">15|25</p>
@@ -41,7 +41,9 @@
           <!-- CARD BACKSIDE -->
           <div class="card_side card_side--back card_side--back-2">
             <div class="center-container">
-              <a routerLink="/driver" class="custom-btn btn">Set Profile</a>
+              <button (click)="onSelect('driver')" class="custom-btn btn">
+                Set Profile
+              </button>
             </div>
           </div>
         </div>
@@ -53,7 +55,7 @@
             <p class="my-3">
               <i class="fa fa-heartbeat custom-fa"></i>
             </p>
-            <h2 class="mt-4">Join as a <strong>Patient</strong></h2>
+            <h2 class="mt-4">Continue as a <strong>Patient</strong></h2>
             <p>Get urgent attendance during your health emergencies</p>
             <div class="">
               <p class="choose-profile-stats">10K</p>
@@ -63,7 +65,9 @@
           <!-- CARD BACKSIDE -->
           <div class="card_side card_side--back card_side--back-1">
             <div class="center-container">
-              <a routerLink="/patient" class="custom-btn btn">Set Profile</a>
+              <button (click)="onSelect('patient')" class="custom-btn btn">
+                Set Profile
+              </button>
             </div>
           </div>
         </div>

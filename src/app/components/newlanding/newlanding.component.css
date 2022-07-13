@@ -1,94 +1,122 @@
-#landing{
-    margin-top:20px;
-    margin-bottom: 20px;
+#landing {
+  /* margin-top: 20px; */
+  /* margin-bottom: 20px; */
+  height: 100vh;
+  /* width:100%; */
 }
 
-#new{
-    font-size: 60px;
-    line-height: 1.5;
-    color: #3C6051;
-
+.landing-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.home-left {
+  background-color: rgba(0, 255, 255, 0.178);
+  height: 100vh;
 }
 
-#ambulance{
-    font-size: 20px;
-    line-height: 1.3;
+.home-content {
+  position: absolute;
+  left: 20%;
+  top: 15%;
 }
 
-#button1:hover{
-    background-color:#3f48439f;
-    
-
+.content {
+  margin-left: 4.3rem;
+  margin-top: 4rem;
+  background-color: rgba(0, 255, 255, 0.048);
+  padding: 3rem 5rem;
+}
+.home-text {
+  font-weight: bolder;
+}
+#new {
+  font-size: 60px;
+  line-height: 4.5rem;
+  text-shadow: 0 0 5px rgba(56, 56, 56, 0.349);
+  color: #3c6051;
 }
 
-.cards{
-    display: flex;
-    padding-top: 20px;
-    justify-content: space-between;
-    margin-top: 10%;
+#ambulance {
+  font-size: 15px;
+  line-height: 1.1rem;
 }
 
-.card1{
-    border: 0px solid white;
+#button1:hover {
+  background-color: #3f48439f;
 }
 
-.card1 .b1 .t1{
-    font-size: 30px;
-    font-weight: bold;
-    color: #3C6051;
-
+.cards {
+  display: flex;
+  padding: 20px 0 0;
+  /* justify-content: space-between; */
+  margin: 2rem 0 0;
 }
 
-.b1 .sb1{
-    font-size: 14px;
+.card1 {
+  border: 0px solid white;
+  margin: 2rem 2rem 0 0;
 }
 
-#button1{
-    background-color: green;
-    margin-top: 10%;
-    
+.card1 .b1 .t1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #3c6051;
 }
 
-.image img{
-    width:800px;
+.b1 .sb1 {
+  font-size: 14px;
 }
 
-.services{
-    display:flex;
-    justify-content: space-around;
+#button1 {
+  background-color: green;
+  margin-top: 10%;
 }
 
-#ourservices{
-    text-align:center ;
-    margin-bottom: 5%;
-    font-size: 40px;
-    font-weight: bold;
-    color: #3C6051;
+.image img {
+  position: absolute;
+  bottom: 0;
+  /* width: 740px; */
+  /* margin-top: 12rem; */
+  width: 100%;
 }
 
-.row1{
-    margin-top: 6%;
+.services {
+  display: flex;
+  justify-content: space-around;
 }
 
-.row2{
-    margin-top: 5%;
+#ourservices {
+  text-align: center;
+  margin-bottom: 5%;
+  font-size: 40px;
+  font-weight: bold;
+  color: #3c6051;
 }
 
-.card2{
-    border:0px solid white;
+.row1 {
+  /* margin-top: 6%; */
 }
 
-.row3{
-    margin-top:1%
-}
-#desc{
-    margin-top: 10%;
-    font-weight: bold;
-    line-height: 1.3;
-    color: rgb(75, 75, 91);
+.row2 {
+  margin-top: 5%;
 }
 
-#trips{
-    font-size: 20px;
-     color: #3C6051;
+.card2 {
+  border: 0px solid white;
+}
+
+.row3 {
+  margin-top: 1%;
+}
+#desc {
+  margin-top: 10%;
+  font-weight: bold;
+  line-height: 1.3;
+  color: rgb(75, 75, 91);
+}
+
+#trips {
+  font-size: 20px;
+  color: #3c6051;
 }

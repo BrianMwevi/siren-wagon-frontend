@@ -1,0 +1,12 @@
+.driver-profile-create {
+  height: 100vh;
+  background: linear-gradient(rgba(5, 27, 36, 0.8), rgba(5, 27, 36, 0.8)),
+    url(../../../assets/images/ambulance.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.form-container {
+  background-color: rgba(9, 53, 69, 0.8);
+}

@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="custom-card my-2">
+    <tr class="custom-card my-2" *ngFor="let patient of patients">
       <td>
         <div class="d-flex align-items-center">
           <img
@@ -19,16 +19,18 @@
             style="width: 45px; height: 45px"
           />
           <div class="ms-3">
-            <p class="fw-bold mb-1 ml-2">Kate Hunington</p>
+            <p class="fw-bold mb-1 ml-2">
+              {{ patient.first_name }} {{ patient.last_name }}
+            </p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-normal mb-1">Designer</p>
+        <p class="fw-normal mb-1">{{ patient.package }}</p>
         <p class="text-muted mb-0">UI/UX</p>
       </td>
       <td>
-        <span class="badge badge-warning rounded-pill d-inline">Admitted</span>
+        <span class="badge badge-warning rounded-pill d-inline">{{patient.medical_condition}}</span>
       </td>
       <td>Senior</td>
       <td>

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { PackagesComponent } from './components/packages/packages.component';
-import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -15,12 +14,29 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
 import { ChooseProfileComponent } from './components/choose-profile/choose-profile.component';
+import { DriverSignupComponent } from './components/driver-signup/driver-signup.component';
+import { NoProfile } from './guards/no-profile.guard';
+import { hasProfile } from './guards/has-profile.guard';
+import { IsDriver } from './guards/is-driver.guard';
 
 const routes: Routes = [
-  { path: 'landing', component: LandingComponent },
-  { path: 'profile/driver', component: DriverProfileComponent },
-  { path: 'profile/select', component: ChooseProfileComponent },
   { path: '', component: NewlandingComponent },
+  { path: 'landing', component: LandingComponent },
+  {
+    path: 'profile/select',
+    component: ChooseProfileComponent,
+    canActivate: [AuthGuard, NoProfile],
+  },
+  {
+    path: 'profile/driver',
+    component: DriverProfileComponent,
+    canActivate: [AuthGuard, hasProfile, IsDriver],
+  },
+  {
+    path: 'profile/driver/create',
+    component: DriverSignupComponent,
+    canActivate: [AuthGuard, NoProfile],
+  },
   { path: 'home', component: HomeComponent },
   {
     path: 'signup',
@@ -37,17 +53,18 @@ const routes: Routes = [
     component: PackagesComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'ambulances', component: AmbulancesComponent },
   {
     path: 'payments',
     component: PaymentsComponent,
     canActivate: [AuthGuard],
   },
+
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
