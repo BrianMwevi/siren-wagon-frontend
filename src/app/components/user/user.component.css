@@ -38,13 +38,17 @@
       margin-right: 15px;
       
   }
-  .age{
-      margin-right: 100px;
+  .fname{
+      margin-right: 70px;
   }
-  .height{
-    margin-right: 70px;
+  .lname{
+    margin-right: 50px;
   }
-  .weight{
-        margin-right: 60px;
+  .email{
+        margin-right: 30px;
       
   }
+  .phone{
+    margin-right: 50px;
+  
+}
