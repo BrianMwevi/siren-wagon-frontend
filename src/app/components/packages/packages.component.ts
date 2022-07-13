@@ -15,11 +15,12 @@ export class PackagesComponent implements OnInit {
      this.package = data
 
      console.log(this.package)
-    })
+   })
+ }
+
+  ngOnInit(): void {
+    this.payment() 
   }
  
-   ngOnInit(): void {
-     this.payment() 
-   }
- 
+   
  }
