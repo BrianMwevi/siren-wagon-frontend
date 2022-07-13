@@ -34,11 +34,13 @@ import { PaymentsFormComponent } from './components/payments-form/payments-form.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
 import { NewlandingComponent } from './components/newlanding/newlanding.component';
 import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
 import { UserUpdateFormComponent } from './components/user-update-form/user-update-form.component';
 import { PatientProfileDetailComponent } from './components/patient-profile-detail/patient-profile-detail.component';
 import { ChooseProfileComponent } from './components/choose-profile/choose-profile.component';
+import { UserComponent } from './components/user/user.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -63,11 +65,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
+    AmbulanceformComponent,
     NewlandingComponent,
     DriverProfileComponent,
     UserUpdateFormComponent,
     PatientProfileDetailComponent,
     ChooseProfileComponent,
+    UserComponent,
   ],
 
   imports: [
