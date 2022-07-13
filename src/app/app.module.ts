@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesModule } from 'flash-messages-angular';
@@ -19,6 +20,7 @@ import {
 
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -27,7 +29,7 @@ import { PackagesComponent } from './components/packages/packages.component';
 import { AmbulancesComponent } from './components/ambulances/ambulances.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/login/login.component'; 
 import { AuthService } from './services/auth.service';
 import { RequestsInterceptor } from './interceptors/requests.interceptor';
 import { PaymentsFormComponent } from './components/payments-form/payments-form.component';
@@ -50,6 +52,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     NavComponent,
     LandingComponent,
     ProfileComponent,
@@ -89,6 +92,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       multi: true,
     },
   ],
+
+ 
   bootstrap: [AppComponent],
 })
 export class AppModule {}

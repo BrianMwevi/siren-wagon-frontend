@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
+
 import { HomeComponent } from './components/home/home.component';
 import { PackagesComponent } from './components/packages/packages.component';
 import { AmbulancesComponent } from './components/ambulances/ambulances.component';
@@ -41,6 +43,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'ambulances', component: AmbulancesComponent },
+  { path: 'payments', component: PaymentsComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  {path: 'profile', component:ProfileComponent},
   {
     path: 'payments',
     component: PaymentsComponent,
