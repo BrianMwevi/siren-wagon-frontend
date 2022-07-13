@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Profile } from 'src/app/models/Profile';
