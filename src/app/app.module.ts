@@ -34,6 +34,7 @@ import { PaymentsFormComponent } from './components/payments-form/payments-form.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -58,6 +59,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignupComponent,
     LoginComponent,
     PaymentsFormComponent,
+    CheckoutComponent,
   ],
 
   imports: [
