@@ -38,6 +38,7 @@ import { NewlandingComponent } from './components/newlanding/newlanding.componen
 import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
 import { UserUpdateFormComponent } from './components/user-update-form/user-update-form.component';
 import { PatientProfileDetailComponent } from './components/patient-profile-detail/patient-profile-detail.component';
+import { ChooseProfileComponent } from './components/choose-profile/choose-profile.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -66,6 +67,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DriverProfileComponent,
     UserUpdateFormComponent,
     PatientProfileDetailComponent,
+    ChooseProfileComponent,
   ],
 
   imports: [

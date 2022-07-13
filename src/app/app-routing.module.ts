@@ -14,10 +14,12 @@ import { NewlandingComponent } from './components/newlanding/newlanding.componen
 import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
+import { ChooseProfileComponent } from './components/choose-profile/choose-profile.component';
 
 const routes: Routes = [
   { path: 'landing', component: LandingComponent },
   { path: 'profile/driver', component: DriverProfileComponent },
+  { path: 'profile/select', component: ChooseProfileComponent },
   { path: '', component: NewlandingComponent },
   { path: 'home', component: HomeComponent },
   {
