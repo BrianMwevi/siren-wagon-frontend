@@ -13,10 +13,12 @@ import { NewlandingComponent } from './components/newlanding/newlanding.componen
 
 import { AuthGuard } from './guards/auth.guard';
 import { NotLoggedInGuard } from './guards/not-logged-in.guard';
+import { DriverProfileComponent } from './components/driver-profile/driver-profile.component';
 
 const routes: Routes = [
   { path: 'landing', component: LandingComponent },
-  { path:'', component: NewlandingComponent},
+  { path: 'profile/driver', component: DriverProfileComponent },
+  { path: '', component: NewlandingComponent },
   { path: 'home', component: HomeComponent },
   {
     path: 'signup',
