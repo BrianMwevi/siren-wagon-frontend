@@ -35,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
+import { NewlandingComponent } from './components/newlanding/newlanding.component';
+import { UserComponent } from './components/user/user.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -60,6 +62,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LoginComponent,
     PaymentsFormComponent,
     AmbulanceformComponent,
+    NewlandingComponent,
+    UserComponent,
   ],
 
   imports: [
