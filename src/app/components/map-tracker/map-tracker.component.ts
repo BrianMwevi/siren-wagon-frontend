@@ -17,22 +17,27 @@ export class MapTrackerComponent implements OnInit {
   latitude: string;
   longitude: string;
   hospitals: any[];
+
+  
   public origin: any;
   public destination: any;
   distance: any;
 
+
+
+
   ngOnInit(): void {
     this.getLocation();
     this.getDirection();
-    this.distance = this.calculateDistance(this.origin, this.destination);
+    // this.distance = this.calculateDistance(this.origin, this.destination);
   }
-  
+
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition);
     }
   }
-  showPosition = (position:any) => {
+  showPosition = (position: any) => {
     this.latitude = position.coords.latitude;
     this.longitude = position.coords.longitude;
     this._auth
@@ -41,7 +46,7 @@ export class MapTrackerComponent implements OnInit {
         this.hospitals = hospitals;
         console.log(hospitals);
       });
-    };
+  };
   getDirection() {
     // -1.3680324416314122, 36.65783621476481;
     this.origin = { lat: -1.3680324416314122, lng: 36.65783621476481 };
@@ -53,12 +58,11 @@ export class MapTrackerComponent implements OnInit {
   }
 
   // calculate the distances from point1 to point2
-  calculateDistance(point1: any, point2: any) {
-    const p1 = new google.maps.LatLng(point1.lat, point1.lng);
-    const p2 = new google.maps.LatLng(point2.lat, point2.lng);
-    return (
-      google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000
-      ).toFixed(2);
-    }
-  }
-  
+  // calculateDistance(point1: any, point2: any) {
+  //   const p1 = new google.maps.LatLng(point1.lat, point1.lng);
+  //   const p2 = new google.maps.LatLng(point2.lat, point2.lng);
+  //   return (
+  //     google.maps.geometry.spherical.computeDistanceBetween(p1, p2) / 1000
+  //   ).toFixed(2);
+  // }
+}

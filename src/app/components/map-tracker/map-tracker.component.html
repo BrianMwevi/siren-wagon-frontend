@@ -1,5 +1,6 @@
-
+{{title}}
 <!-- this creates a google map on the page with the given lat/lng from -->
+
 <!-- the component as the initial center of the map: -->
 
 <agm-map
@@ -15,5 +16,4 @@
     [longitude]="hospital.longitude"
   ></agm-marker>
   <agm-direction [origin]="origin" [destination]="destination"> </agm-direction>
-  <agm-info-window [disableAutoPan]="true"></agm-info-window>
 </agm-map>
