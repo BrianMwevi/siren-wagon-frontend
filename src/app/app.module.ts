@@ -77,7 +77,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       // apiKey: 'AIzaSyAqQHS82Z-rO2ZXeijvJmPaAcvdde24y0E',
       // apiKey: 'AIzaSyDgEk-p4OSwZrIT7mps8er1xF8CkuimJK4',
       apiKey: 'AIzaSyDolIlXkHFZIHWqk4xWPeIi8dP_pM_LMMQ',
-      libraries: ['places'],
+      libraries: ['places','drawing', 'geometry'],
     }),
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
