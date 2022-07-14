@@ -73,11 +73,10 @@
   margin-top: 10%;
 }
 
-.image img {
+.image #map {
   position: absolute;
   bottom: 0;
-  /* width: 740px; */
-  /* margin-top: 12rem; */
+height: 100%;
   width: 100%;
 }
 
@@ -92,10 +91,6 @@
   font-size: 40px;
   font-weight: bold;
   color: #3c6051;
-}
-
-.row1 {
-  /* margin-top: 6%; */
 }
 
 .row2 {
