@@ -66,7 +66,11 @@ const routes: Routes = [
     canActivate: [NotLoggedInGuard],
   },
 
-  { path: 'createamb', component: AmbulanceformComponent },
+  {
+    path: 'createamb',
+    component: AmbulanceformComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: 'maps', component: MapTrackerComponent },
   { path: '**', redirectTo: '' },
