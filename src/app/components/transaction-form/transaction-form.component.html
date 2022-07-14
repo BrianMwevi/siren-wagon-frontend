@@ -1,6 +1,4 @@
-<form #form="ngForm" (ngSubmit)="onSubmit()">
-  <h2 class="pb-2 custom-header">Transact Using Mpesa</h2>
-
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="form-group py-3 px-4">
     <input
       type="number"

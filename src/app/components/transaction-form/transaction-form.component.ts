@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Transaction } from 'src/app/models/Transaction';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,7 +19,8 @@ export class TransactionFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-  onSubmit(): void {
+
+  onSubmit(form: NgForm): void {
     const accountLength = `${this.receiver}`.length;
     if (this.amount < 5)
       return this._auth.logMessage(
@@ -31,15 +33,11 @@ export class TransactionFormComponent implements OnInit {
         'alert-danger'
       );
     this.uiLoader.start();
+    form.value.transaction_type = 'transfer';
     this._auth
-      .pay({
-        amount: this.amount,
-        receiver: this.receiver,
-        transaction_type: 'transfer',
-      })
+      .pay(form.value)
       .then((transaction) => {
-        this.amount = null;
-        this.receiver = null;
+        form.onReset();
         this.transaction.emit(transaction);
         this._auth.logMessage(
           'Pin request has been initiated to your phone number',

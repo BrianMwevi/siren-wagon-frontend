@@ -61,8 +61,10 @@
               <app-transaction [transactions]="transactions"></app-transaction>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="custom-card text-center p-4 mt-4">
+          <div class="col-lg-4 pt-5">
+            <div class="custom-card text-center p-4 mt-5">
+              <h2 class="pb-2 custom-header">Transact Using Mpesa</h2>
+
               <app-transaction-form
                 (transaction)="newTransaction($event)"
               ></app-transaction-form>

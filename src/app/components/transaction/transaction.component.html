@@ -26,9 +26,7 @@
       <td>{{ transaction.amount }}</td>
       <td>{{ transaction.transaction_type | titlecase }}</td>
       <td>{{ transaction.transaction_date }}</td>
-      <td
-        [ngClass]="transaction.completed? 'bg-success' : 'bg-danger'"
-      >
+      <td [ngClass]="transaction.completed ? 'bg-success' : 'bg-danger'">
         {{ transaction.completed }}
       </td>
     </tr>
@@ -36,3 +34,5 @@
   <!--Table body-->
 </table>
 <!--Table-->
+
+<!-- Transactions Total -->
