@@ -15,6 +15,7 @@ import { NoProfile } from './guards/no-profile.guard';
 import { hasProfile } from './guards/has-profile.guard';
 import { IsDriver } from './guards/is-driver.guard';
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
+import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const routes: Routes = [
   { path: '', component: NewlandingComponent },
@@ -56,6 +57,7 @@ const routes: Routes = [
 
   { path: 'createamb', component: AmbulanceformComponent },
 
+  { path: 'maps', component: MapTrackerComponent },
   { path: '**', redirectTo: '' },
 ];
 

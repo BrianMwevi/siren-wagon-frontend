@@ -1,0 +1,13 @@
+<p>map-tracker works!</p>
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<agm-map [fullscreenControl]="true" [clickableIcons]="true" [zoom]="15" [latitude]="lat" [longitude]="lng">
+  <agm-marker
+    *ngFor="let hospital of hospitals"
+    [latitude]="hospital.latitude"
+    [longitude]="hospital.longitude"
+  ></agm-marker>
+</agm-map>
