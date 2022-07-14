@@ -1,0 +1,32 @@
+<span class="map-title p-0 m-0">{{ title }}</span>
+<div class="map-overlay" *ngIf="hospitalsLoaded">
+  <div class="map-content custom-card text-center px-5">
+    <div class="container content">
+      <h2 class="custom-header">Ambulance Found!</h2>
+      <h2>Hospital: {{ hospital.name }}</h2>
+      <div class="py-3 px-3">
+        <h3>Your location</h3>
+        <p>Latitude: {{ origin.lat }}</p>
+        <p>Longitude: {{ origin.lng }}</p>
+        <p class="text-center muted"><strong>Ambulance on it's way</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+<agm-map
+  [fullscreenControl]="true"
+  [clickableIcons]="true"
+  [zoom]="18"
+  [latitude]="origin.lat"
+  [longitude]="origin.lng"
+  [showDefaultInfoWindow]="true"
+>
+  <agm-marker> [label]="marker.label" </agm-marker>
+  <agm-direction
+    [markerOptions]="origin"
+    *ngIf="hospitalsLoaded"
+    [origin]="origin"
+    [destination]="destination"
+  >
+  </agm-direction>
+</agm-map>

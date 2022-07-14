@@ -48,6 +48,11 @@ import { ProfileService } from './services/profile.service';
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { TransactionFormComponent } from './components/transaction-form/transaction-form.component';
+import { TripService } from './services/trip.service';
+import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
+import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
+import { MapBtnComponent } from './components/map-btn/map-btn.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -85,6 +90,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PatientSignupComponent,
     TransactionComponent,
     TransactionFormComponent,
+    MapTrackerComponent,
+    MapBtnComponent,
   ],
 
   imports: [
@@ -96,6 +103,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BrowserAnimationsModule,
     FlashMessagesModule.forRoot(),
     // Import NgxUiLoaderModule with custom configuration globally
+    AgmCoreModule.forRoot({
+      // apiKey: 'AIzaSyAqQHS82Z-rO2ZXeijvJmPaAcvdde24y0E',
+      // apiKey: 'AIzaSyDgEk-p4OSwZrIT7mps8er1xF8CkuimJK4',
+      apiKey: 'AIzaSyDolIlXkHFZIHWqk4xWPeIi8dP_pM_LMMQ',
+      libraries: ['places'],
+    }),
+    AgmDirectionModule,
+
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
     // Import NgxUiLoaderModule
@@ -106,11 +121,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     //   apiKey: 'f423e44c405db71d0debe874a1b21f1a',
     // }),
     AppRoutingModule,
+    // MatFormFieldModule,
+    // MatInputModule,
   ],
 
   providers: [
     AuthService,
     ProfileService,
+    TripService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestsInterceptor,
