@@ -51,6 +51,7 @@ import { TripService } from './services/trip.service';
 import { AgmCoreModule } from '@agm/core';
 import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
+import { MapBtnComponent } from './components/map-btn/map-btn.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -88,6 +89,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     TransactionComponent,
     TransactionFormComponent,
     MapTrackerComponent,
+    MapBtnComponent,
   ],
 
   imports: [

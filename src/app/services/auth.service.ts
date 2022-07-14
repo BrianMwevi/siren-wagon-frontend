@@ -115,12 +115,7 @@ export class AuthService {
       JSON.parse(window.atob(accessTokenParts[1])).user_id
     );
   }
-  async getHosptitals(lat: string, long: string) {
-    const value = this.http.get<any>(
-      `${this.url}/google/hospitals?latitude=${lat}&longitude=${long}`
-    );
-    return await lastValueFrom(value);
-  }
+
   // updateProfile(profileId: number, profile: any): Observable<any> {
   //   return this.http.put(`${this.url}/profile/${profileId}/`, profile);
   // }
