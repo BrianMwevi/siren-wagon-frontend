@@ -21,10 +21,10 @@ import { PatientSignupComponent } from './components/patient-signup/patient-sign
 import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const routes: Routes = [
-  
   { path: '', component: NewlandingComponent },
-    { path: 'payments', component: PaymentsComponent },
-    {path: 'profile/select',
+  { path: 'payments', component: PaymentsComponent },
+  {
+    path: 'profile/select',
     component: ChooseProfileComponent,
     canActivate: [AuthGuard, NoProfile],
   },
@@ -65,7 +65,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: 'maps', component: MapTrackerComponent },
+  {
+    path: 'maps',
+    component: MapTrackerComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', redirectTo: '' },
 ];
 
