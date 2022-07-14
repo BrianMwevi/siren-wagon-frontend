@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap");
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+.btn {
+  cursor: pointer;
+}
 .alert {
   margin: 0;
   padding: 1rem;
@@ -42,7 +49,7 @@
 .custom-input:focus,
 .custom-input:active {
   border: none;
-  border-radius:0;
+  border-radius: 0;
   color: #20df80;
   border-bottom: 1px solid #20df80;
   outline: none;
@@ -94,10 +101,31 @@
   outline: none;
   position: relative;
   padding: 9px 18px;
-  color: #fff;
+  color: #00ffcb;
   border: 2px solid transparent;
 }
-
+.custom-btn-2 {
+  background-color: #1a2036;
+  box-shadow: 6px 6px 24px #0202029f;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 9px 18px;
+  color: #00ffcb;
+  border: 2px solid transparent;
+}
+.custom-btn-2:hover {
+  color: #20df80;
+  font-weight: bolder;
+  background-color: transparent;
+  border: 2px solid #1a2036;
+  border-left: none;
+  border-right: none;
+  font-weight: bolder;
+  transform: translateY(-6px);
+  border-radius: 0;
+}
 .custom-btn::before {
   animation: ring 1.5s infinite;
   content: "";
@@ -111,9 +139,8 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.custom-btn:hover,
-.custom-btn:focus {
-  /* color: #313133; */
+.custom-btn:hover {
+  color: #313133;
   font-weight: bolder;
   background-color: transparent;
   border: 2px solid #1a2036;
@@ -157,3 +184,30 @@
 /* Fix phone country display End */
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+/* Custom Card Styles Start */
+.custom-card {
+  border-radius: 4px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0 0 5px 2px #e2e2e2d2;
+}
+
+/* Customer Card Styles End*/
+/* Custom fa-icons start */
+.custom-fa {
+  font-size: 2.5rem;
+  color: #36ae7c;
+}
+
+h2.custom-header {
+  font-size: 1.8rem;
+  font-weight: bolder;
+}
+
+.custom-hover:hover {
+  box-shadow: 0 0 5px 5px rgba(8, 34, 29, 0.1);
+  transform: scale(1.001);
+  transition: all 0.2s ease-in-out;
+}
+/* Custom fa-icons End */

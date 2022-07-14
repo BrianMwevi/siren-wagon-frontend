@@ -1,0 +1,78 @@
+<div>
+  <div class="d-flex align-items-center pt-4">
+    <img
+      src="{{ profile.picture }}"
+      class="rounded-circle"
+      alt="Profile Picture"
+      style="width: 60px; height: 60px"
+    />
+    <div class="ms-3">
+      <p
+        class="fw-bold mb-1 ml-2"
+        *ngIf="profile.user.first_name && profile.user.last_name"
+      >
+        {{ profile.user.first_name | titlecase }}
+        {{ profile.user.last_name | titlecase }}
+      </p>
+      <p
+        class="fw-bold mb-1 ml-2"
+        *ngIf="!profile.user.first_name || !profile.user.last_name"
+      >
+        {{ profile.user.username | titlecase }}
+      </p>
+
+      <p class="mb-1 ml-2">Joined: 22-04-2022</p>
+    </div>
+  </div>
+  <form #form="ngForm" class="pt-5" (ngSubmit)="onProfileUpdate(form)">
+    <div class="form-group">
+      <input
+        type="text"
+        name="first_name"
+        placeholder="First Name"
+        value="{{ profile.user.first_name }}"
+        class="form-control custom-input"
+        [ngClass]="updated ? 'updated' : ''"
+        [(ngModel)]="profile.user.first_name"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        name="last_name"
+        placeholder="Last Name"
+        value="{{ profile.user.last_name }}"
+        class="form-control custom-input"
+        [ngClass]="updated ? 'updated' : ''"
+        [(ngModel)]="profile.user.last_name"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value="{{ profile.user.email }}"
+        class="form-control custom-input"
+        [ngClass]="updated ? 'updated' : ''"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        name="phone"
+        placeholder="254712345678"
+        value="{{ profile.user.phone }}"
+        class="form-control custom-input"
+        [ngClass]="updated ? 'updated' : ''"
+        [(ngModel)]="profile.user.phone"
+      />
+    </div>
+    <button class="custom-btn btn-block py-2">Update Profile</button>
+  </form>
+  <div class="bg-light mt-5 mb-3 p-2 custom-card custom-hover">
+    <p>Username: Admin</p>
+    <p>Id Number: 43453483</p>
+    <p>Driving License: 43453483</p>
+  </div>
+</div>
