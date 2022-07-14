@@ -36,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TripService } from './services/trip.service';
 import { AgmCoreModule } from '@agm/core';
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -79,6 +80,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
       apiKey: 'AIzaSyDolIlXkHFZIHWqk4xWPeIi8dP_pM_LMMQ',
       libraries: ['places'],
     }),
+    AgmDirectionModule,
+
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
 
     // Import NgxUiLoaderModule
