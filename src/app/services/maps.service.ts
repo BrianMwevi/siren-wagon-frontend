@@ -14,6 +14,6 @@ export class MapsService {
 
 
   getHosptitals(lat:string, long:string):Observable<any>{
-    return this.http.get(`${this.url}?lat=${lat}&long=${long}`)
+    return this.http.get(`${this.url}?latitude=${lat}&longitude=${long}`)
   }
 }
