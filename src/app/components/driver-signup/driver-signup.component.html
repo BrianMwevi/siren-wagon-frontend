@@ -1,0 +1,74 @@
+<section class="driver-profile-create">
+  <div class="container center-container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto content">
+        <div class="form-container">
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)">
+            <h2 class="pb-2 custom-header">Update Profile</h2>
+
+            <div class="form-group py-3 px-4">
+              <input
+                type="text"
+                name="id_number"
+                #idNumber="ngModel"
+                placeholder="Enter ID/Passport number"
+                required
+                minlength="7"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (idNumber.errors && idNumber.touched) ||
+                    (profileForm.submitted && !profileForm.value.username)
+                }"
+                [(ngModel)]="driver.id_number"
+              />
+              <div
+                [hidden]="!idNumber.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Id/passport number required</p>
+              </div>
+              <div
+                [hidden]="!idNumber.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Must be at least 7 characters</p>
+              </div>
+            </div>
+            <div class="form-group py-3 px-4">
+              <input
+                type="text"
+                name="driving_license"
+                #license="ngModel"
+                placeholder="Enter drinving license"
+                required
+                minlength="7"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (license.errors && license.touched) ||
+                    (profileForm.submitted && !profileForm.value.username)
+                }"
+                [(ngModel)]="driver.driving_license"
+              />
+              <div
+                [hidden]="!license.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Driving license is required</p>
+              </div>
+              <div
+                [hidden]="!license.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Must be at least 7 characters</p>
+              </div>
+            </div>
+
+            <button class="custom-btn px-5" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+.choose-profile-card {
+  position: relative;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  height: 30rem;
+}
+.card_side {
+  height: 30rem;
+  position: absolute;
+  transition: all 0.8s ease;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+.card_side--front {
+  /* background-color: #28b485; */
+  background-color: #fff;
+}
+.card_side--back {
+  transform: rotateY(180deg);
+}
+.card_side--back-2 {
+  background-image: linear-gradient(to right bottom, #ffb900, #ff7730);
+}
+.card_side--back-1 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+}
+.card_side--back-3 {
+  background-image: linear-gradient(to right bottom, #2998ff, #5643fa);
+}
+.choose-profile-card:hover .card_side--front {
+  transform: rotateY(-180deg);
+}
+.choose-profile-card:hover .card_side--back {
+  transform: rotateY(0);
+}
+
+.custom-fa {
+  font-size: 4rem;
+}
+
+.choose-profile-stats {
+  border-radius: 50%;
+  border: 8px solid #28b485;
+  border-left-color: lavender;
+  color: rgb(73, 73, 73);
+  text-shadow: 1px 1px 10px #a3a3a3;
+  font-weight: bolder;
+  height: 7rem;
+  width: 7rem;
+  line-height: 6rem;
+  margin: 0 auto;
+  font-size: 2rem;
+  box-shadow: 0 0 10px 10px inset rgba(139, 139, 139, 0.329);
+}
+
+.choose-profile-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.driver-stats {
+  font-size: 1.6rem;
+  border-color: #ff7730;
+  border-top-color: #ffffff;
+  box-shadow: 0 0 10px 10px rgba(139, 139, 139, 0.329);
+}
+.card-3-color {
+  color: #5643fa;
+}
+
+.card-2-color {
+  color: #ff7730;
+}
