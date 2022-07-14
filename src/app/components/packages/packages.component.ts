@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PackageService } from 'src/app/services/package.service';
-
 @Component({
   selector: 'app-packages',
   templateUrl: './packages.component.html',
@@ -22,5 +21,6 @@ export class PackagesComponent implements OnInit {
   ngOnInit(): void {
     this.payment() 
   }
-
-}
+ 
+   
+ }
