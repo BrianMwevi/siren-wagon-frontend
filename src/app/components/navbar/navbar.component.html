@@ -1,0 +1,38 @@
+<nav
+  class="navbar navbar-expand-sm float-right w-100 sticky-top nav-bg"
+>
+  <div class="container">
+    <a routerLink="/" class="navbar-brand"
+      ><img src="../../../assets/images/logo.png" width="55px" alt="Logo"
+    /></a>
+    <button
+      class="navbar-toggler"
+      data-target="#mainNav"
+      data-toggle="collapse"
+      type="button"
+    >
+      <span class="navbar-icon-toggler"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="mainNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!user">
+          <a routerLink="/signup" class="nav-link btn custom-btn-2 px-4"
+            >Signup</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="!user">
+          <a routerLink="/login" class="nav-link btn custom-btn px-4">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="user">
+          <a routerLink="/login" class="nav-link">Ambulances</a>
+        </li>
+        <li class="nav-item nav-link" *ngIf="user" (click)="profile()">
+          Profile
+        </li>
+        <li class="nav-item text-white" *ngIf="user">
+          <app-logout></app-logout>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,48 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="form-group py-3 px-4">
+    <input
+      type="number"
+      name="amount"
+      #userAmount="ngModel"
+      placeholder="Enter amount"
+      required
+      class="form-control custom-input"
+      [ngClass]="{
+        'is-invalid':
+          (userAmount.errors && userAmount.touched) ||
+          (form.submitted && !form.value.amount)
+      }"
+      [(ngModel)]="amount"
+    />
+    <div
+      [hidden]="!userAmount.errors?.['required']"
+      class="invalid-feedback text-danger text-left p-0 m-0"
+    >
+      <p class="p-0 m-0">You must enter amount to be sent</p>
+    </div>
+  </div>
+  <div class="form-group py-3 px-4">
+    <input
+      type="number"
+      name="receiver"
+      #account="ngModel"
+      placeholder="Enter account number"
+      required
+      class="form-control custom-input"
+      [ngClass]="{
+        'is-invalid':
+          (account.errors && account.touched) ||
+          (form.submitted && !form.value.receiver)
+      }"
+      [(ngModel)]="receiver"
+    />
+    <div
+      [hidden]="!account.errors?.['required']"
+      class="invalid-feedback text-danger text-left p-0 m-0"
+    >
+      <p class="p-0 m-0">Receiver account is required</p>
+    </div>
+  </div>
+
+  <button class="custom-btn px-5" type="submit">Submit</button>
+</form>

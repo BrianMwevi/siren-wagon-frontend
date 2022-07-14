@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { ErrorHandlerService } from './error-handler.service';
+import { FlashMessagesService } from 'flash-messages-angular';
+import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
 import { Profile } from '../models/Profile';
+import { Transaction } from '../models/Transaction';
 
 @Injectable({
   providedIn: 'root',
@@ -18,39 +21,56 @@ export class AuthService {
   public redirectUrl: string = '';
 
   private initialUser: any = null;
-  private profileSource: BehaviorSubject<Profile> = new BehaviorSubject(
+  private userSource: BehaviorSubject<User> = new BehaviorSubject(
     this.initialUser
   );
 
-  public profile = this.profileSource.asObservable();
+  public user = this.userSource.asObservable();
   private url = `${environment.DEV_URL}`;
 
-  constructor(private http: HttpClient, private route: Router) {
-    this.profileSource.next(this.getLocalStorage('profile'));
+  constructor(
+    private http: HttpClient,
+    private handleErrors: ErrorHandlerService,
+    private flashMessage: FlashMessagesService,
+    private ngxService: NgxUiLoaderService
+  ) {
+    this.userSource.next(this.getLocalStorage('user'));
   }
 
-  signupUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.url}/users/register/`, user);
+  async signupUser(user: User) {
+    const value = this.http.post<User>(`${this.url}/users/register/`, user);
+    return await lastValueFrom(value);
   }
 
-  loginUser(user: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/users/login/`, user).pipe(
-      map((jwtToken: any) => {
-        const user_id = this.setToken(jwtToken);
-        this.getProfile(user_id).subscribe();
-        return this.profile.subscribe((user) => user);
-      })
+  async loginUser(user: User) {
+    const value = this.http.post<any>(`${this.url}/users/login/`, user);
+    return await lastValueFrom(value);
+  }
+  async getUser(id: string) {
+    const user = this.http.get<any>(`${this.url}/users/${id}`);
+    return await lastValueFrom(user);
+  }
+
+  updateUser(user: User) {
+    this.userSource.next(user);
+  }
+
+  async getProfile(id: number) {
+    const resp = this.http.get<Profile>(`${this.url}/profile/${id}`);
+    return await lastValueFrom(resp).then((profile) =>
+      this.setLocalStorage('profile', profile)
     );
   }
-
-  getProfile(id: number): Observable<Profile> {
-    return this.http.get<Profile>(`${this.url}/profile/${id}`).pipe(
-      map((profile: any) => {
-        this.setLocalStorage('profile', profile);
-        this.profileSource.next(profile);
-        return profile;
-      })
+  async getTransactions() {
+    const resp = this.http.get(`${this.url}/transactions`);
+    return await lastValueFrom(resp);
+  }
+  async pay(value: Transaction) {
+    const resp = this.http.post<Transaction>(
+      `${this.url}/transactions/`,
+      value
     );
+    return await lastValueFrom(resp);
   }
 
   refreshToken(): Observable<any> {
@@ -62,16 +82,21 @@ export class AuthService {
     );
   }
 
-  logout(user: User) {
-    return this.http.post<User>(`${this.url}/users/logout/`, user).pipe(
-      map((resp) => {
-        this.removeLocalStorage();
-        this.profileSource.next(this.initialUser);
-        this.route.navigate([this.redirectUrl]);
-        return this.profile.subscribe();
-      })
-    );
+  logout(user: any) {
+    this.removeLocalStorage();
+    this.userSource.next(this.initialUser);
+    return this.user.subscribe();
   }
+
+  // logout(user: User) {
+  //   return this.http.post<User>(`${this.url}/users/logout/`, user).pipe(
+  //     map((resp) => {
+  //       this.removeLocalStorage();
+  //       this.profileSource.next(this.initialUser);
+  //       return this.profile.subscribe();
+  //     })
+  //   );
+  // }
 
   setToken(token: any) {
     this.setLocalStorage('accessToken', token.access);
@@ -83,11 +108,12 @@ export class AuthService {
     const accessToken = JSON.parse(window.atob(accessTokenParts[1]));
     const refreshToken = JSON.parse(window.atob(refreshTokenParts[1]));
 
-    // this.setLocalStorage('user_id', accessTokenParts[0]);
-
     this.setLocalStorage('accessExpiry', new Date(accessToken.exp * 1000));
     this.setLocalStorage('refreshExpiry', new Date(refreshToken.exp * 1000));
-    return JSON.parse(window.atob(accessTokenParts[1])).user_id;
+    return this.setLocalStorage(
+      'userId',
+      JSON.parse(window.atob(accessTokenParts[1])).user_id
+    );
   }
 
   // updateProfile(profileId: number, profile: any): Observable<any> {
@@ -98,7 +124,7 @@ export class AuthService {
   // }
 
   setLocalStorage(key: string, value: any) {
-    if (key === 'profile') value = JSON.stringify(value);
+    if (key === 'profile' || key === 'user') value = JSON.stringify(value);
     localStorage.setItem(key, value);
     return this.getLocalStorage(key);
   }
@@ -107,13 +133,32 @@ export class AuthService {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('profile');
+    localStorage.removeItem('userId');
     localStorage.removeItem('accessExpiry');
     localStorage.removeItem('refreshExpiry');
+    localStorage.removeItem('user');
     return this.getLocalStorage('accessToken');
   }
   getLocalStorage(key: string): any {
     const item = localStorage.getItem(key);
     if (key === 'profile' && item != null) return JSON.parse(item);
+    if (key === 'user' && item != null) return JSON.parse(item);
     return item;
+  }
+
+  logMessage = (message: string, messageType: string, time = 5000) => {
+    this.ngxService.stopAll();
+    this.flashMessage.show(message, {
+      cssClass: messageType,
+      timeout: time,
+    });
+  };
+
+  processErrors(errors: any) {
+    for (const error in errors) {
+      for (let message of errors[error]) {
+        this.logMessage(message, 'alert-danger', 8000);
+      }
+    }
   }
 }
