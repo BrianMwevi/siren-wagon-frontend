@@ -12,7 +12,7 @@ export class MapsService {
     longitude: 0,
   };
 
-  private url = `${environment.DEV_URL}`;
+  private url = `${environment.PROD_URL}`;
 
   constructor(private http: HttpClient) {
     this.getUserLocation();

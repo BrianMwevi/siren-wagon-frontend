@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ProfileService {
-  url: string = environment.DEV_URL;
+  url: string = environment.PROD_URL;
   constructor(
     private http: HttpClient,
     private handleErrors: ErrorHandlerService
