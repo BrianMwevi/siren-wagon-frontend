@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { HomeComponent } from './components/home/home.component';
-import { PackagesComponent } from './components/packages/packages.component';
-import { PaymentsComponent } from './components/payments/payments.component';
-import { LandingComponent } from './components/landing/landing.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UserComponent } from './components/user/user.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { AmbulanceformComponent } from './components/ambulanceform/ambulanceform.component';
@@ -20,6 +14,7 @@ import { DriverSignupComponent } from './components/driver-signup/driver-signup.
 import { NoProfile } from './guards/no-profile.guard';
 import { hasProfile } from './guards/has-profile.guard';
 import { IsDriver } from './guards/is-driver.guard';
+import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 
 const routes: Routes = [
   { path: '', component: NewlandingComponent },
@@ -38,10 +33,16 @@ const routes: Routes = [
     component: DriverSignupComponent,
     canActivate: [AuthGuard, NoProfile],
   },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'landing', component: LandingComponent },
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'profile/patient/create',
+    component: PatientSignupComponent,
+    canActivate: [AuthGuard, NoProfile],
+  },
+  {
+    path: 'profile/patient',
+    component: ProfileComponent,
+    canActivate: [AuthGuard, hasProfile],
+  },
   {
     path: 'signup',
     component: SignupComponent,
@@ -54,22 +55,7 @@ const routes: Routes = [
   },
 
   { path: 'createamb', component: AmbulanceformComponent },
-  {
-    path: 'packages',
-    component: PackagesComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'payments',
-    component: PaymentsComponent,
-    canActivate: [AuthGuard],
-  },
 
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuard],
-  },
   { path: '**', redirectTo: '' },
 ];
 

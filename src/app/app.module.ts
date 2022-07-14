@@ -43,6 +43,10 @@ import { DriverSignupComponent } from './components/driver-signup/driver-signup.
 import { LogoutComponent } from './components/logout/logout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './components/user/user.component';
+import { ProfileService } from './services/profile.service';
+import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
+import { TransactionFormComponent } from './components/transaction-form/transaction-form.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'green',
@@ -76,6 +80,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     LogoutComponent,
     NavbarComponent,
     UserComponent,
+    PatientSignupComponent,
+    TransactionComponent,
+    TransactionFormComponent,
   ],
 
   imports: [
@@ -97,6 +104,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
   providers: [
     AuthService,
+    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestsInterceptor,

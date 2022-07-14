@@ -1,0 +1,38 @@
+<!--Table-->
+<table class="table table-striped w-auto" *ngIf="transactions">
+  <!--Table head-->
+  <thead class="custom-card">
+    <tr>
+      <th>#</th>
+      <th>Receiver</th>
+      <th>Account</th>
+      <th>Amount</th>
+      <th>Message</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <!--Table head-->
+
+  <!--Table body-->
+  <tbody>
+    <tr
+      *ngFor="let transaction of transactions; let i = index"
+      class="table-info"
+    >
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ transaction.username | titlecase }}</td>
+      <td>{{ transaction.receiver }}</td>
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.transaction_type | titlecase }}</td>
+      <td>{{ transaction.transaction_date }}</td>
+      <td
+        [ngClass]="transaction.completed? 'bg-success' : 'bg-danger'"
+      >
+        {{ transaction.completed }}
+      </td>
+    </tr>
+  </tbody>
+  <!--Table body-->
+</table>
+<!--Table-->

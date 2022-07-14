@@ -9,6 +9,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
 import { Profile } from '../models/Profile';
+import { Transaction } from '../models/Transaction';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +21,11 @@ export class AuthService {
   public redirectUrl: string = '';
 
   private initialUser: any = null;
-  private profileSource: BehaviorSubject<Profile> = new BehaviorSubject(
+  private userSource: BehaviorSubject<User> = new BehaviorSubject(
     this.initialUser
   );
 
-  public profile = this.profileSource.asObservable();
+  public user = this.userSource.asObservable();
   private url = `${environment.DEV_URL}`;
 
   constructor(
@@ -33,7 +34,7 @@ export class AuthService {
     private flashMessage: FlashMessagesService,
     private ngxService: NgxUiLoaderService
   ) {
-    this.profileSource.next(this.getLocalStorage('profile'));
+    this.userSource.next(this.getLocalStorage('user'));
   }
 
   async signupUser(user: User) {
@@ -50,11 +51,26 @@ export class AuthService {
     return await lastValueFrom(user);
   }
 
+  updateUser(user: User) {
+    this.userSource.next(user);
+  }
+
   async getProfile(id: number) {
     const resp = this.http.get<Profile>(`${this.url}/profile/${id}`);
     return await lastValueFrom(resp).then((profile) =>
       this.setLocalStorage('profile', profile)
     );
+  }
+  async getTransactions() {
+    const resp = this.http.get(`${this.url}/transactions`);
+    return await lastValueFrom(resp);
+  }
+  async pay(value: Transaction) {
+    const resp = this.http.post<Transaction>(
+      `${this.url}/transactions/`,
+      value
+    );
+    return await lastValueFrom(resp);
   }
 
   refreshToken(): Observable<any> {
@@ -66,10 +82,10 @@ export class AuthService {
     );
   }
 
-  logout(user) {
+  logout(user: any) {
     this.removeLocalStorage();
-    this.profileSource.next(this.initialUser);
-    return this.profile.subscribe();
+    this.userSource.next(this.initialUser);
+    return this.user.subscribe();
   }
 
   // logout(user: User) {

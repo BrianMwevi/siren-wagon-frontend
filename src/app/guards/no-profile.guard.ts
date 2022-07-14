@@ -30,7 +30,9 @@ export class NoProfile implements CanActivate {
 
   hasProfile(nextUrl: string): true | UrlTree {
     const user = this._auth.getLocalStorage('user');
-    if (user.user_type === null) return true;
+    if (user !== null) {
+      if (user.user_type === null) return true;
+    }
     this._auth.redirectUrl = nextUrl;
     return this.router.parseUrl(`profile/${user.user_type}`);
   }

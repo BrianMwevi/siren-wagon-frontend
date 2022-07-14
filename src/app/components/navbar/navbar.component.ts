@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,15 +9,18 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  user!: User;
-  constructor(private _auth: AuthService) {}
+  user!: any;
+  constructor(private _auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    const user = this._auth.getLocalStorage('user');
-    if (user == null) {
-      this.user = null;
-    } else {
-      this.user = user;
-    }
+    this._auth.user.subscribe((user) => (this.user = user));
+    // if (user == null) {
+    //   this.user = null;
+    // } else {
+    //   this.user = user;
+    // }
+  }
+  profile(): void {
+    this.router.navigate([`profile/select`]);
   }
 }

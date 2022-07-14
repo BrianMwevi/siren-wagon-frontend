@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap");
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+.btn {
+  cursor: pointer;
+}
 .alert {
   margin: 0;
   padding: 1rem;
@@ -97,7 +104,28 @@
   color: #00ffcb;
   border: 2px solid transparent;
 }
-
+.custom-btn-2 {
+  background-color: #1a2036;
+  box-shadow: 6px 6px 24px #0202029f;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 9px 18px;
+  color: #00ffcb;
+  border: 2px solid transparent;
+}
+.custom-btn-2:hover {
+  color: #20df80;
+  font-weight: bolder;
+  background-color: transparent;
+  border: 2px solid #1a2036;
+  border-left: none;
+  border-right: none;
+  font-weight: bolder;
+  transform: translateY(-6px);
+  border-radius: 0;
+}
 .custom-btn::before {
   animation: ring 1.5s infinite;
   content: "";
@@ -111,8 +139,7 @@
   transition: all 0.3s ease-in-out 0s;
 }
 
-.custom-btn:hover,
-.custom-btn:focus {
+.custom-btn:hover {
   color: #313133;
   font-weight: bolder;
   background-color: transparent;

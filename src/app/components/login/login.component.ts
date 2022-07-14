@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
             } else {
               this.router.navigate(['profile/select']);
             }
+            this._authService.updateUser(user);
           });
           form.resetForm();
         })
