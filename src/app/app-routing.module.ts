@@ -21,17 +21,10 @@ import { PatientSignupComponent } from './components/patient-signup/patient-sign
 import { MapTrackerComponent } from './components/map-tracker/map-tracker.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'packages', component: PackagesComponent },
-  // { path: 'ambulances', component: AmbulancesComponent },
-  { path: 'payments', component: PaymentsComponent },
-  { path: 'profile', component: ProfileComponent },
   
   { path: '', component: NewlandingComponent },
-  {
-    path: 'profile/select',
+    { path: 'payments', component: PaymentsComponent },
+    {path: 'profile/select',
     component: ChooseProfileComponent,
     canActivate: [AuthGuard, NoProfile],
   },
