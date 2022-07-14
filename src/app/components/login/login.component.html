@@ -28,55 +28,50 @@
                   (form.submitted && !form.value.email)
               }"
             />
+            </div>
             <div
               [hidden]="!email.errors?.['pattern']"
               class="invalid-feedback text-danger text-left"
             >
               <p class="ml-2 custom-color">Enter a valid email</p>
             </div>
-            <div
-              [hidden]="!email.errors?.['required']"
-              class="invalid-feedback text-danger text-left"
-            >
-              <p class="ml-2 custom-color">Email address is required</p>
-            </div>
-          </div>
-          <div class="form-group my-5">
-            <input
-              #password="ngModel"
-              type="password"
-              name="password"
-              class="form-control custom-input"
-              placeholder="Password"
-              required
-              [ngClass]="{
-                'is-invalid':
-                  (password.errors && password.touched) ||
-                  (form.submitted && !form.value.password)
-              }"
-              [(ngModel)]="user.password"
-            />
+            <div class="form-group my-5">
+              <input
+                #password="ngModel"
+                type="password"
+                name="password"
+                class="form-control custom-input"
+                placeholder="Password"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    (password.errors && password.touched) ||
+                    (form.submitted && !form.value.password)
+                }"
+                [(ngModel)]="user.password"
+              />
 
-            <div
-              [hidden]="!password.errors?.['required']"
-              class="invalid-feedback text-danger text-left"
-            >
-              <p class="ml-2 custom-color">Password is required</p>
+              <div
+                [hidden]="!password.errors?.['required']"
+                class="invalid-feedback text-danger text-left"
+              >
+                <p class="ml-2 custom-color">Password is required</p>
+              </div>
             </div>
-          </div>
-          <button class="custom-btn text-white px-5 mb-3">Login</button>
-          <div class="d-flex justify-content-center text-white py-2">
-            <p>Don't have an account?</p>
-            <a
-              class="ml-2 account-link"
-              routerLink="/signup"
-              (click)="form.reset()"
-              >Signup</a
-            >
-          </div>
-        </form>
+            <button class="custom-btn text-white px-5 mb-3">Login</button>
+            <div class="d-flex justify-content-center text-white py-2">
+              <p>Don't have an account?</p>
+              <a
+                class="ml-2 account-link"
+                routerLink="/signup"
+                (click)="form.reset()"
+                >Signup</a
+              >
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   <!-- <div class="login-footer"></div> -->
 </section>

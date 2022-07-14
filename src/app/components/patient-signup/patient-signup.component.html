@@ -1,0 +1,103 @@
+<section class="patient-profile-create">
+  <div class="container center-container">
+    <div class="row">
+      <div class="col-lg-6 mx-auto content">
+        <div class="form-container">
+          <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)">
+            <h2 class="pb-2 custom-header">Update Profile</h2>
+
+            <div class="form-group py-3 px-4">
+              <input
+                type="text"
+                name="first_name"
+                #firstName="ngModel"
+                placeholder="First Name"
+                required
+                minlength="3"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (firstName.errors && firstName.touched) ||
+                    (profileForm.submitted && !profileForm.value.first_name)
+                }"
+                [(ngModel)]="patient.first_name"
+              />
+              <div
+                [hidden]="!firstName.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">First name is required</p>
+              </div>
+              <div
+                [hidden]="!firstName.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Must be at least 3 characters</p>
+              </div>
+            </div>
+            <div class="form-group py-3 px-4">
+              <input
+                type="text"
+                name="last_name"
+                #lastName="ngModel"
+                placeholder="Last Name"
+                required
+                minlength="3"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (lastName.errors && lastName.touched) ||
+                    (profileForm.submitted && !profileForm.value.first_name)
+                }"
+                [(ngModel)]="patient.last_name"
+              />
+              <div
+                [hidden]="!lastName.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">First name is required</p>
+              </div>
+              <div
+                [hidden]="!lastName.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Must be at least 3 characters</p>
+              </div>
+            </div>
+            <div class="form-group py-3 px-4">
+              <input
+                type="text"
+                name="id_number"
+                #idNumber="ngModel"
+                placeholder="Enter ID/Passport number"
+                required
+                minlength="7"
+                class="form-control custom-input"
+                [ngClass]="{
+                  'is-invalid':
+                    (idNumber.errors && idNumber.touched) ||
+                    (profileForm.submitted && !profileForm.value.id_number)
+                }"
+                [(ngModel)]="patient.id_number"
+              />
+              <div
+                [hidden]="!idNumber.errors?.['required']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Id/passport number required</p>
+              </div>
+              <div
+                [hidden]="!idNumber.errors?.['minlength']"
+                class="invalid-feedback text-danger text-left p-0 m-0"
+              >
+                <p class="p-0 m-0">Must be at least 7 characters</p>
+              </div>
+            </div>
+
+            <button class="custom-btn px-5" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

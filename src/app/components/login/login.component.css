@@ -1,7 +1,10 @@
 .user-login {
+  position: relative;
   height: 100vh;
   /* background-color: #093545; */
   position: relative;
+  /* background-color: #093545; */
+  top: 0;
 }
 
 .login-footer {
@@ -14,8 +17,6 @@
   background-position: top center;
   height: 100px;
 }
-
-
 
 .login-btn {
   border: 2px solid #20df80;

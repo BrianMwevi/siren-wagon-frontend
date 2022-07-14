@@ -1,0 +1,29 @@
+.nav-bg {
+  /* background-color: rgba(255, 255, 255, 0.37); */
+  background-color: rgba(215, 218, 230, 0.31);
+}
+.custom-btn-2 {
+  color: #20df80 !important;
+}
+
+.custom-btn {
+  color: #fff !important;
+}
+
+.custom-btn:hover,
+.custom-btn-2:hover {
+  color: #20df80 !important;
+  background-color: #1a2036 !important;
+}
+
+.nav-link {
+  font-size: 1rem;
+  margin-right: 1.3rem;
+  color: #000;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid #20df809c;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
