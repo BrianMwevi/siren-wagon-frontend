@@ -5,4 +5,5 @@ export interface User {
   phone: string;
   password?: string;
   picture?: string;
+  user_type?: string;
 }

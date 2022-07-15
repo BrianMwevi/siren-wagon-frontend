@@ -18,6 +18,7 @@ export class PaymentsComponent implements OnInit {
   getTrips(): void {
     this.tripservice.getTrip().subscribe((data) => {
       this.trips = data;
+      console.log(data)
     });
   }
 }

@@ -1,58 +1,69 @@
-
-    <div class="card" style="width: 35rem;">
-        <img class='img'src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture">
-        <h3>Lucy Mongwe</h3>
-       <div class="card-body">
-         <div class="card-text">
-        
-         <p class="fname"> first name:Lucy</p>
-         <p class="lname">last name:Mongwe</p>
-         <p class="email">email:lucy@gmail.com</p>
-         <p class="phone">phone:0726879170</p> 
-
-         </div>
-      
-       </div>
-       
-       <h1>Recent Activities</h1>
-       <div class="container" style="margin-bottom:20px">
-       
-      <div class="cards" style="width: 10rem;border-radius:10%;background-color:#27493b;margin-left:10px;">
-        <div class="text">
-          <p>Medical <br> checkup</p>
-          <p>2nd Apr 2022</p>
-          <br>
-          <p>Endoscopy</p>
-           
-        </div>
-
-      </div>
-
-      <div class="cards" style="width: 10rem;border-radius:10%;background-color:#27493b;">
-        <div class="text">
-          <p>Medical <br> checkup</p>
-          <p>3rd Apr 2022</p>
-          <br>
-          <p>Barry Alan</p>
-        </div>
-
-      </div>
-
-      <div class="cards" style="width: 10rem;border-radius:10%;background-color:#27493b;">
-        <div class="text">
-          <p>Medical <br> checkup</p>
-          <p>4th Apr 2022</p>
-          <br>
-          <p>Diabetes</p>
-        </div>
-
-      </div>
-
+<div class="card">
+  <img
+    class="img"
+    src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg"
+    alt="profile_picture"
+  />
+  <h3>Lucy Mongwe</h3>
+  <div class="card-body">
+    <div class="card-text">
+      <p class="fname">First name: {{ patient.first_name }}</p>
+      <p class="lname">Last name: {{ patient.last_name }}</p>
+      <p class="email">Email: {{ patient.user.email }}</p>
+      <p class="phone">Phone: {{ patient.user.phone }}</p>
     </div>
+  </div>
+
+  <h1>Recent Activities</h1>
+  <div class="container" style="margin-bottom: 20px">
+    <div
+      class="cards"
+      style="
+        width: 10rem;
+        border-radius: 10%;
+        background-color: #27493b;
+        margin-left: 10px;
+      "
+    >
+      <div class="text">
+        <p>
+          Medical <br />
+          checkup
+        </p>
+        <p>2nd Apr 2022</p>
+        <br />
+        <p>Endoscopy</p>
       </div>
-        
-    
-    
-    
+    </div>
 
+    <div
+      class="cards"
+      style="width: 10rem; border-radius: 10%; background-color: #27493b"
+    >
+      <div class="text">
+        <p>
+          Medical <br />
+          checkup
+        </p>
+        <p>3rd Apr 2022</p>
+        <br />
+        <p>Barry Alan</p>
+      </div>
+    </div>
 
+    <div
+      class="cards"
+      style="width: 10rem; border-radius: 10%; background-color: #27493b"
+    >
+      <div class="text">
+        <p>
+          Medical <br />
+          checkup
+        </p>
+        <p>4th Apr 2022</p>
+        <br />
+        <p>Diabetes</p>
+      </div>
+    </div>
+  </div>
+</div>

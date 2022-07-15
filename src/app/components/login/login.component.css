@@ -1,9 +1,24 @@
 .user-login {
-  height: 100vh;
-  background-color: #093545;
   position: relative;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(../../../assets/images/ambulance.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  width: 100%;
+
+  top: 0;
 }
 
+.form-container {
+  background-color: #244049cb;
+  color: #fff;
+}
 .login-footer {
   position: absolute;
   bottom: 0;
@@ -14,8 +29,6 @@
   background-position: top center;
   height: 100px;
 }
-
-
 
 .login-btn {
   border: 2px solid #20df80;

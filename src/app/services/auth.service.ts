@@ -9,6 +9,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
 import { environment } from '../../environments/environment';
 import { User } from '../models/User';
 import { Profile } from '../models/Profile';
+import { Transaction } from '../models/Transaction';
 
 @Injectable({
   providedIn: 'root',
@@ -20,11 +21,11 @@ export class AuthService {
   public redirectUrl: string = '';
 
   private initialUser: any = null;
-  private profileSource: BehaviorSubject<Profile> = new BehaviorSubject(
+  private userSource: BehaviorSubject<User> = new BehaviorSubject(
     this.initialUser
   );
 
-  public profile = this.profileSource.asObservable();
+  public user = this.userSource.asObservable();
   private url = `${environment.PROD_URL}`;
 
   constructor(
@@ -33,7 +34,7 @@ export class AuthService {
     private flashMessage: FlashMessagesService,
     private ngxService: NgxUiLoaderService
   ) {
-    this.profileSource.next(this.getLocalStorage('profile'));
+    this.userSource.next(this.getLocalStorage('user'));
   }
 
   async signupUser(user: User) {
@@ -45,12 +46,31 @@ export class AuthService {
     const value = this.http.post<any>(`${this.url}/users/login/`, user);
     return await lastValueFrom(value);
   }
+  async getUser(id: string) {
+    const user = this.http.get<any>(`${this.url}/users/${id}`);
+    return await lastValueFrom(user);
+  }
+
+  updateUser(user: User) {
+    this.userSource.next(user);
+  }
 
   async getProfile(id: number) {
     const resp = this.http.get<Profile>(`${this.url}/profile/${id}`);
     return await lastValueFrom(resp).then((profile) =>
       this.setLocalStorage('profile', profile)
     );
+  }
+  async getTransactions() {
+    const resp = this.http.get(`${this.url}/transactions`);
+    return await lastValueFrom(resp);
+  }
+  async pay(value: Transaction) {
+    const resp = this.http.post<Transaction>(
+      `${this.url}/transactions/`,
+      value
+    );
+    return await lastValueFrom(resp);
   }
 
   refreshToken(): Observable<any> {
@@ -62,15 +82,21 @@ export class AuthService {
     );
   }
 
-  logout(user: User) {
-    return this.http.post<User>(`${this.url}/users/logout/`, user).pipe(
-      map((resp) => {
-        this.removeLocalStorage();
-        this.profileSource.next(this.initialUser);
-        return this.profile.subscribe();
-      })
-    );
+  logout(user: any) {
+    this.removeLocalStorage();
+    this.userSource.next(this.initialUser);
+    return this.user.subscribe();
   }
+
+  // logout(user: User) {
+  //   return this.http.post<User>(`${this.url}/users/logout/`, user).pipe(
+  //     map((resp) => {
+  //       this.removeLocalStorage();
+  //       this.profileSource.next(this.initialUser);
+  //       return this.profile.subscribe();
+  //     })
+  //   );
+  // }
 
   setToken(token: any) {
     this.setLocalStorage('accessToken', token.access);
@@ -84,7 +110,7 @@ export class AuthService {
 
     this.setLocalStorage('accessExpiry', new Date(accessToken.exp * 1000));
     this.setLocalStorage('refreshExpiry', new Date(refreshToken.exp * 1000));
-    this.setLocalStorage(
+    return this.setLocalStorage(
       'userId',
       JSON.parse(window.atob(accessTokenParts[1])).user_id
     );
@@ -98,7 +124,7 @@ export class AuthService {
   // }
 
   setLocalStorage(key: string, value: any) {
-    if (key === 'profile') value = JSON.stringify(value);
+    if (key === 'profile' || key === 'user') value = JSON.stringify(value);
     localStorage.setItem(key, value);
     return this.getLocalStorage(key);
   }
@@ -110,11 +136,13 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('accessExpiry');
     localStorage.removeItem('refreshExpiry');
+    localStorage.removeItem('user');
     return this.getLocalStorage('accessToken');
   }
   getLocalStorage(key: string): any {
     const item = localStorage.getItem(key);
     if (key === 'profile' && item != null) return JSON.parse(item);
+    if (key === 'user' && item != null) return JSON.parse(item);
     return item;
   }
 
